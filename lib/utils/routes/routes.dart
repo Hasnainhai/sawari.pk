@@ -1,16 +1,13 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:sawari_pk/utils/routes/routes_name.dart';
 import 'package:sawari_pk/view/onboarding/onboarding_view1.dart';
 
-
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case RoutesName.home:
+      case RoutesName.onBoarding1:
         return MaterialPageRoute(
-            builder: (BuildContext context) => const HomeView());
+            builder: (BuildContext context) => const OnBoardingView1());
 
       default:
         return MaterialPageRoute(builder: (_) {
