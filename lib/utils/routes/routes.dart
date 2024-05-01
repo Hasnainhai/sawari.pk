@@ -4,6 +4,8 @@ import 'package:sawari_pk/view/home/home_view.dart';
 
 import '../../view/onboarding/onboarding_view1.dart';
 
+import 'package:sawari_pk/view/onboarding/onboarding_view1.dart';
+
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
