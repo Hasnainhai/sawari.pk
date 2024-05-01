@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sawari_pk/res/components/colors.dart';
 import 'package:sawari_pk/res/components/vertical_speacing.dart';
+import 'package:sawari_pk/view/onboarding/widgets/on_button.dart';
 
 class OnBoardingView1 extends StatelessWidget {
   const OnBoardingView1({super.key});
@@ -87,6 +88,7 @@ class OnBoardingView1 extends StatelessWidget {
               bottom: 20,
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
                   children: [
@@ -121,7 +123,8 @@ class OnBoardingView1 extends StatelessWidget {
                       ),
                     )
                   ],
-                )
+                ),
+                const OnButton()
               ],
             ),
           )
