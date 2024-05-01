@@ -1,6 +1,9 @@
+
+
 import 'package:flutter/material.dart';
-import 'package:sawari_pk/view/home/home_view.dart';
-import 'routes_name.dart';
+import 'package:sawari_pk/utils/routes/routes_name.dart';
+import 'package:sawari_pk/view/onboarding/onboarding_view1.dart';
+
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
