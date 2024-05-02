@@ -5,8 +5,8 @@ import 'package:sawari_pk/res/components/vertical_speacing.dart';
 import 'package:sawari_pk/utils/routes/routes_name.dart';
 import 'package:sawari_pk/view/onboarding/widgets/on_button.dart';
 
-class OnBoardingView1 extends StatelessWidget {
-  const OnBoardingView1({super.key});
+class OnboardingView2 extends StatelessWidget {
+  const OnboardingView2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +36,14 @@ class OnBoardingView1 extends StatelessWidget {
           ),
           const VerticalSpeacing(20),
           Image.asset(
-            "images/onboarding1.png",
+            "images/onboarding2.png",
           ),
           Padding(
             padding: const EdgeInsets.only(left: 20.0, right: 20, top: 20),
             child: Row(
               children: [
                 Text(
-                  "Welcome to Sawari.",
+                  "Explore, Book,",
                   style: GoogleFonts.getFont(
                     "Urbanist",
                     textStyle: const TextStyle(
@@ -54,7 +54,7 @@ class OnBoardingView1 extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "pk",
+                  " Go!",
                   style: GoogleFonts.getFont(
                     "Urbanist",
                     textStyle: const TextStyle(
@@ -70,7 +70,7 @@ class OnBoardingView1 extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Text(
-              "Your Journey Starts HereGet ready to embark on a hassle-free travel experience with Sawari.pk. From booking to boarding, we've got all your travel needs covered.",
+              "Your Ultimate Travel CompanionDiscover the easiest way to plan your travels with Sawari.pk. Explore destinations, book tickets, and experience travel like never before.",
               style: GoogleFonts.getFont(
                 "Urbanist",
                 textStyle: const TextStyle(
@@ -95,9 +95,9 @@ class OnBoardingView1 extends StatelessWidget {
                   children: [
                     Container(
                       height: 8,
-                      width: 19,
+                      width: 8,
                       decoration: BoxDecoration(
-                        color: AppColor.primaryColor,
+                        color: AppColor.primaryColor.withOpacity(0.5),
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
@@ -106,9 +106,9 @@ class OnBoardingView1 extends StatelessWidget {
                     ),
                     Container(
                       height: 8,
-                      width: 8,
+                      width: 19,
                       decoration: BoxDecoration(
-                        color: AppColor.primaryColor.withOpacity(0.5),
+                        color: AppColor.primaryColor,
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
@@ -129,7 +129,7 @@ class OnBoardingView1 extends StatelessWidget {
                   onTap: () {
                     Navigator.pushNamed(
                       context,
-                      RoutesName.onBoarding2,
+                      RoutesName.onBoarding3,
                     );
                   },
                 )
