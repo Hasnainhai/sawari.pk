@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sawari_pk/res/components/vertical_speacing.dart';
 import '../../res/components/colors.dart';
@@ -59,9 +58,20 @@ class _HomeViewState extends State<HomeView> {
               child: Column(
                 children: [
                   Text.rich(
-                      textAlign: TextAlign.start,
-                      TextSpan(
-                          text: 'Your Getway to Streamless\n',
+                    textAlign: TextAlign.start,
+                    TextSpan(
+                      text: 'Your Getway to Streamless\n',
+                      style: GoogleFonts.getFont(
+                        "Urbanist",
+                        textStyle: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w600,
+                          color: AppColor.textColor,
+                        ),
+                      ),
+                      children: [
+                        TextSpan(
+                          text: 'Travel!',
                           style: GoogleFonts.getFont(
                             "Urbanist",
                             textStyle: const TextStyle(
@@ -70,60 +80,136 @@ class _HomeViewState extends State<HomeView> {
                               color: AppColor.textColor,
                             ),
                           ),
-                          children: [
-                            TextSpan(
-                              text: 'Travel!',
-                              style: GoogleFonts.getFont(
-                                "Urbanist",
-                                textStyle: const TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColor.textColor,
-                                ),
-                              ),
-                            ),
-                          ])),
+                        ),
+                      ],
+                    ),
+                  ),
                   const VerticalSpeacing(20.0),
                   const ExpandableContainer(),
-                  // Container(
-                  //   height: 40.0,
-                  //   width: double.infinity,
-                  //   decoration: BoxDecoration(
-                  //     borderRadius: BorderRadius.circular(10.0),
-                  //     color: AppColor.whiteColor,
-                  //   ),
-                  //   child: Center(
-                  //     child: Padding(
-                  //       padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                  //       child: Row(
-                  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //         children: [
-                  //           Text(
-                  //             'Book your journey',
-                  //             style: GoogleFonts.getFont(
-                  //               "Urbanist",
-                  //               textStyle: const TextStyle(
-                  //                 fontSize: 14,
-                  //                 fontWeight: FontWeight.w400,
-                  //                 color: AppColor.boxTxColor,
-                  //               ),
-                  //             ),
-                  //           ),
-                  //           IconButton(
-                  //             onPressed: () {},
-                  //             icon: const Icon(
-                  //               Icons.expand_more_outlined,
-                  //               color: AppColor.downIconColor,
-                  //             ),
-                  //           ),
-                  //         ],
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
+                  const VerticalSpeacing(30.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Choose Near You!',
+                        style: GoogleFonts.getFont(
+                          "Urbanist",
+                          textStyle: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                            color: AppColor.titleColor,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        'See all',
+                        style: GoogleFonts.getFont(
+                          "Urbanist",
+                          textStyle: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: AppColor.textColor,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
-            )
+            ),
+            const VerticalSpeacing(16.0),
+            // Choose near you card
+            const Padding(
+              padding: EdgeInsets.only(left: 20.0),
+              child: SizedBox(
+                height: 170,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      HomeCard(),
+                      SizedBox(width: 16.0),
+                      HomeCard(),
+                      SizedBox(width: 16.0),
+                      HomeCard(),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class HomeCard extends StatelessWidget {
+  const HomeCard({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 169,
+      width: 146,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        color: AppColor.cardColor,
+        border: Border.all(
+          width: 0.5,
+          color: AppColor.cardborderColor,
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(5.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 107,
+              width: 136,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10.0),
+                  topRight: Radius.circular(10.0),
+                ),
+                image: DecorationImage(
+                  image: AssetImage('images/bus.png'),
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+            const VerticalSpeacing(8.0),
+            Text.rich(
+              textAlign: TextAlign.start,
+              TextSpan(
+                text: 'Agency Name\n',
+                style: GoogleFonts.getFont(
+                  "Urbanist",
+                  textStyle: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: AppColor.titleColor,
+                  ),
+                ),
+                children: [
+                  TextSpan(
+                    text: 'Gilgit to Rawal Pindi',
+                    style: GoogleFonts.getFont(
+                      "Urbanist",
+                      textStyle: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: AppColor.titleColor,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
