@@ -44,7 +44,7 @@ class _HomeViewState extends State<HomeView> {
                   style: GoogleFonts.getFont(
                     "Urbanist",
                     textStyle: const TextStyle(
-                      fontSize: 12,
+                      fontSize: 14,
                       fontWeight: FontWeight.w400,
                       color: AppColor.textColor,
                     ),
@@ -59,6 +59,8 @@ class _HomeViewState extends State<HomeView> {
               Padding(
                 padding: const EdgeInsets.only(left: 16.0, right: 16.0),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text.rich(
                       textAlign: TextAlign.start,
