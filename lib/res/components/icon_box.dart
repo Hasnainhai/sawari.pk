@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sawari_pk/res/components/colors.dart';
 
-class ProfileBox extends StatelessWidget {
-  const ProfileBox({
+class IconBox extends StatelessWidget {
+  const IconBox({
     super.key,
     required this.bgImg,
   });
@@ -16,9 +16,11 @@ class ProfileBox extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
         color: AppColor.primaryColor.withOpacity(0.1),
-        image: DecorationImage(
-          image: NetworkImage(bgImg),
-          fit: BoxFit.contain,
+      ),
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset(bgImg),
         ),
       ),
     );
