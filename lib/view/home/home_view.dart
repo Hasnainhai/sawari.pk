@@ -193,7 +193,7 @@ class _HomeViewState extends State<HomeView> {
                   ),
                 ),
               ),
-              const VerticalSpeacing(40.0),
+              const VerticalSpeacing(30.0),
             ],
           ),
         ),
