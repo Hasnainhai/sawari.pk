@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:sawari_pk/utils/routes/routes_name.dart';
 import 'package:sawari_pk/view/auth/login_view.dart';
-import 'package:sawari_pk/view/onboarding/onboarding_view1.dart';
+
+import 'package:sawari_pk/view/home/home_view.dart';
+
+import '../../view/onboarding/onboarding_view1.dart';
+
 import 'package:sawari_pk/view/onboarding/onboarding_view2.dart';
 import 'package:sawari_pk/view/onboarding/onboarding_view3.dart';
 
@@ -20,6 +24,9 @@ class Routes {
       case RoutesName.login:
         return MaterialPageRoute(
             builder: (BuildContext context) => const LoginView());
+      case RoutesName.home:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => const HomeView());
 
       default:
         return MaterialPageRoute(builder: (_) {
