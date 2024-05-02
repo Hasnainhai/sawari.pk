@@ -22,7 +22,10 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
+
       initialRoute: RoutesName.dashboard,
+
+
       onGenerateRoute: Routes.generateRoute,
     );
   }
