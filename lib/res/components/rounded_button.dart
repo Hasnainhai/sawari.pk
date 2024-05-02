@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sawari_pk/res/components/colors.dart';
 
 class RoundedButton extends StatelessWidget {
@@ -18,9 +19,9 @@ class RoundedButton extends StatelessWidget {
       onTap: onpress,
       child: Container(
         height: 46.0,
-        width: 200.0,
+        width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.0),
+          borderRadius: BorderRadius.circular(8.0),
           color: AppColor.primaryColor,
         ),
         child: Center(
@@ -30,9 +31,13 @@ class RoundedButton extends StatelessWidget {
                 )
               : Text(
                   title,
-                  style: const TextStyle(
-                    color: AppColor.whiteColor,
-                    fontWeight: FontWeight.w600,
+                  style: GoogleFonts.getFont(
+                    "Urbanist",
+                    textStyle: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: AppColor.whiteColor,
+                    ),
                   ),
                 ),
         ),
