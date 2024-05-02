@@ -174,7 +174,12 @@ class LoginView extends StatelessWidget {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        RoutesName.signup,
+                      );
+                    },
                     child: Text(
                       "Sign Up",
                       style: GoogleFonts.getFont(
