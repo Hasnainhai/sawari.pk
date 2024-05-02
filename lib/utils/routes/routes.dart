@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sawari_pk/utils/routes/routes_name.dart';
 import 'package:sawari_pk/view/onboarding/onboarding_view1.dart';
+import 'package:sawari_pk/view/onboarding/onboarding_view2.dart';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -8,6 +9,9 @@ class Routes {
       case RoutesName.onBoarding1:
         return MaterialPageRoute(
             builder: (BuildContext context) => const OnBoardingView1());
+      case RoutesName.onBoarding2:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => const OnboardingView2());
 
       default:
         return MaterialPageRoute(builder: (_) {
