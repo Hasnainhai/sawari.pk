@@ -68,7 +68,7 @@ class OnBoardingView1 extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Text(
-              "Your Journey Starts Here Get ready to embark on a hassle-free travel experience with Sawari.pk. From booking to boarding, we've got all your travel needs covered.",
+              "Your Journey Starts HereGet ready to embark on a hassle-free travel experience with Sawari.pk. From booking to boarding, we've got all your travel needs covered.",
               style: GoogleFonts.getFont(
                 "Urbanist",
                 textStyle: const TextStyle(
