@@ -9,4 +9,6 @@ class RoutesName {
   static const String notifications = 'notification_view';
   static const String booking = 'booking_view';
   static const String profile = 'profile_view';
+
+  static const String busDetail = 'bus_detail_view';
 }
