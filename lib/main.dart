@@ -16,16 +16,13 @@ class MyApp extends StatelessWidget {
       showSemanticsDebugger: false,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xffFCFDFF),
+        scaffoldBackgroundColor: const Color(0xffF8FAFC),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
           elevation: 0,
         ),
       ),
-
       initialRoute: RoutesName.dashboard,
-
-
       onGenerateRoute: Routes.generateRoute,
     );
   }
