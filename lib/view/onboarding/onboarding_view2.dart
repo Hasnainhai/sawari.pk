@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sawari_pk/res/components/colors.dart';
 import 'package:sawari_pk/res/components/vertical_speacing.dart';
+import 'package:sawari_pk/utils/routes/routes_name.dart';
 import 'package:sawari_pk/view/onboarding/widgets/on_button.dart';
 
 class OnboardingView2 extends StatelessWidget {
@@ -125,7 +126,12 @@ class OnboardingView2 extends StatelessWidget {
                   ],
                 ),
                 OnButton(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      RoutesName.onBoarding3,
+                    );
+                  },
                 )
               ],
             ),

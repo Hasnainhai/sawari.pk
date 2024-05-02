@@ -5,4 +5,5 @@ class RoutesName {
   static const String signUp = 'Sign_up';
   static const String onBoarding1 = 'Onboarding_Screen1';
   static const String onBoarding2 = 'Onboarding_Screen2';
+  static const String onBoarding3 = 'Onboarding_Screen3';
 }
