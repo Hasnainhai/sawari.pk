@@ -5,4 +5,8 @@ class RoutesName {
   static const String home = 'home_view';
   static const String login = 'login_view';
   static const String signup = 'signup_view';
+  static const String dashboard = 'dashboard_view';
+  static const String notifications = 'notification_view';
+  static const String booking = 'booking_view';
+  static const String profile = 'profile_view';
 }

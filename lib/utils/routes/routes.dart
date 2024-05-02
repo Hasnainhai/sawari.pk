@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:sawari_pk/utils/routes/routes_name.dart';
 import 'package:sawari_pk/view/auth/login_view.dart';
 import 'package:sawari_pk/view/auth/signup_view.dart';
+import 'package:sawari_pk/view/booking/booking.dart';
+import 'package:sawari_pk/view/home/dashboard/bottom_bar.dart';
 
 import 'package:sawari_pk/view/home/home_view.dart';
+import 'package:sawari_pk/view/notifications/notifications.dart';
+import 'package:sawari_pk/view/profile/profile.dart';
 
 import '../../view/onboarding/onboarding_view1.dart';
 
@@ -31,6 +35,18 @@ class Routes {
       case RoutesName.signup:
         return MaterialPageRoute(
             builder: (BuildContext context) => const SignupView());
+      case RoutesName.dashboard:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => const DashBoardView());
+      case RoutesName.notifications:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => const NotificationsView());
+      case RoutesName.booking:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => const BookingView());
+      case RoutesName.profile:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => const ProfileView());
 
       default:
         return MaterialPageRoute(builder: (_) {
