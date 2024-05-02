@@ -4,9 +4,13 @@ import 'package:sawari_pk/res/components/colors.dart';
 class IconBox extends StatelessWidget {
   const IconBox({
     super.key,
-    required this.bgImg,
+    this.bgImg,
+    this.icon,
+    this.color,
   });
-  final String bgImg;
+  final String? bgImg;
+  final IconData? icon;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +24,12 @@ class IconBox extends StatelessWidget {
       child: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Image.asset(bgImg),
+          child: icon == null
+              ? Image.asset(bgImg!)
+              : Icon(
+                  icon,
+                  color: color,
+                ),
         ),
       ),
     );
