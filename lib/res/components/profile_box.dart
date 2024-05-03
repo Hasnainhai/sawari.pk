@@ -18,7 +18,7 @@ class ProfileBox extends StatelessWidget {
         color: AppColor.primaryColor.withOpacity(0.1),
         image: DecorationImage(
           image: NetworkImage(bgImg),
-          fit: BoxFit.contain,
+          fit: BoxFit.cover,
         ),
       ),
     );
