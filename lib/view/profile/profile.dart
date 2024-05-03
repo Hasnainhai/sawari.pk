@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sawari_pk/res/components/vertical_speacing.dart';
-
 import '../../res/components/colors.dart';
 import '../../res/components/icon_box.dart';
 
