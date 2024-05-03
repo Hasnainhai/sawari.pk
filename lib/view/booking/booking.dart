@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sawari_pk/res/components/profile_box.dart';
-import 'package:sawari_pk/res/components/vertical_speacing.dart';
-
 import '../../res/components/colors.dart';
 import '../../res/components/icon_box.dart';
 
@@ -88,11 +86,31 @@ class _BookingViewState extends State<BookingView>
           ),
         ),
       ),
-      body: const SafeArea(
+      body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(left: 16.0, right: 16.0),
-          child: Column(
-            children: [],
+          padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+          child: TabBarView(
+            controller: _tabController,
+            children: const <Widget>[
+              Center(
+                child: Text(
+                  'Display Upcoming Bookings',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+              Center(
+                child: Text(
+                  'Display Completed Bookings',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+              Center(
+                child: Text(
+                  'Display Cancelled Bookings',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+            ],
           ),
         ),
       ),
