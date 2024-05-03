@@ -11,4 +11,5 @@ class AppColor {
   static const Color cardColor = Color(0xffF5F5F5);
   static const Color cardborderColor = Color(0xffC8C8C8);
   static const Color unselectIconColor = Color(0xff666666);
+  static const Color dotlineColor = Color(0xffC0C0C0);
 }
