@@ -6,6 +6,7 @@ import 'package:sawari_pk/res/components/profile_box.dart';
 import 'package:sawari_pk/res/components/rounded_button.dart';
 import 'package:sawari_pk/res/components/vertical_speacing.dart';
 import 'package:sawari_pk/utils/routes/routes_name.dart';
+import 'package:sawari_pk/view/home/confirm_booking.dart';
 import 'package:sawari_pk/view/home/widgets/booking_detail_widget.dart';
 
 class BookingDetailView extends StatelessWidget {
@@ -210,9 +211,11 @@ class BookingDetailView extends StatelessWidget {
                           RoundedButton(
                               title: "Book Now",
                               onpress: () {
-                                Navigator.pushNamed(
-                                  context,
-                                  RoutesName.seatSelection,
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return const ConfirmDialog();
+                                  },
                                 );
                               }),
                           const VerticalSpeacing(
