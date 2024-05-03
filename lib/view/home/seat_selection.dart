@@ -166,7 +166,7 @@ class SelectSeatView extends StatelessWidget {
                         onpress: () {
                           Navigator.pushNamed(
                             context,
-                            RoutesName.seatSelection,
+                            RoutesName.bookingDetailview,
                           );
                         }),
                     const VerticalSpeacing(

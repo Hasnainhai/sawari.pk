@@ -3,6 +3,7 @@ import 'package:sawari_pk/utils/routes/routes_name.dart';
 import 'package:sawari_pk/view/auth/login_view.dart';
 import 'package:sawari_pk/view/auth/signup_view.dart';
 import 'package:sawari_pk/view/booking/booking.dart';
+import 'package:sawari_pk/view/home/booking_detail_view.dart';
 import 'package:sawari_pk/view/home/bus_detail_view.dart';
 import 'package:sawari_pk/view/home/dashboard/bottom_bar.dart';
 
@@ -55,6 +56,9 @@ class Routes {
       case RoutesName.seatSelection:
         return MaterialPageRoute(
             builder: (BuildContext context) => const SelectSeatView());
+      case RoutesName.bookingDetailview:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => const BookingDetailView());
 
       default:
         return MaterialPageRoute(builder: (_) {
