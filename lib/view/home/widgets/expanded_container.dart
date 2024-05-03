@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -61,127 +63,129 @@ class _ExpandableContainerState extends State<ExpandableContainer> {
                   ),
                 ],
               ),
-              Visibility(
-                visible: _isExpanded,
-                child: Column(
-                  children: [
-                    const VerticalSpeacing(10.0),
-                    Container(
-                      height: 37,
-                      width: double.infinity,
-                      color: AppColor.boxTxColor.withOpacity(0.1),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Departure',
-                              style: GoogleFonts.getFont(
-                                "Urbanist",
-                                textStyle: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColor.boxTxColor,
+              Expanded(
+                child: Visibility(
+                  visible: _isExpanded,
+                  child: Column(
+                    children: [
+                      const VerticalSpeacing(10.0),
+                      Container(
+                        height: 37,
+                        width: double.infinity,
+                        color: AppColor.boxTxColor.withOpacity(0.1),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Departure',
+                                style: GoogleFonts.getFont(
+                                  "Urbanist",
+                                  textStyle: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColor.boxTxColor,
+                                  ),
                                 ),
                               ),
-                            ),
-                            const Icon(
-                              Icons.expand_more_outlined,
-                              color: AppColor.downIconColor,
-                            ),
-                          ],
+                              const Icon(
+                                Icons.expand_more_outlined,
+                                color: AppColor.downIconColor,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    const VerticalSpeacing(10.0),
-                    Container(
-                      height: 37,
-                      width: double.infinity,
-                      color: AppColor.boxTxColor.withOpacity(0.1),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Arrival',
-                              style: GoogleFonts.getFont(
-                                "Urbanist",
-                                textStyle: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColor.boxTxColor,
+                      const VerticalSpeacing(10.0),
+                      Container(
+                        height: 37,
+                        width: double.infinity,
+                        color: AppColor.boxTxColor.withOpacity(0.1),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Arrival',
+                                style: GoogleFonts.getFont(
+                                  "Urbanist",
+                                  textStyle: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColor.boxTxColor,
+                                  ),
                                 ),
                               ),
-                            ),
-                            const Icon(
-                              Icons.expand_more_outlined,
-                              color: AppColor.downIconColor,
-                            ),
-                          ],
+                              const Icon(
+                                Icons.expand_more_outlined,
+                                color: AppColor.downIconColor,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    const VerticalSpeacing(10.0),
-                    Container(
-                      height: 37,
-                      width: double.infinity,
-                      color: AppColor.boxTxColor.withOpacity(0.1),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Departure Date',
-                              style: GoogleFonts.getFont(
-                                "Urbanist",
-                                textStyle: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColor.boxTxColor,
+                      const VerticalSpeacing(10.0),
+                      Container(
+                        height: 37,
+                        width: double.infinity,
+                        color: AppColor.boxTxColor.withOpacity(0.1),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Departure Date',
+                                style: GoogleFonts.getFont(
+                                  "Urbanist",
+                                  textStyle: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColor.boxTxColor,
+                                  ),
                                 ),
                               ),
-                            ),
-                            const Icon(
-                              Icons.expand_more_outlined,
-                              color: AppColor.downIconColor,
-                            ),
-                          ],
+                              const Icon(
+                                Icons.expand_more_outlined,
+                                color: AppColor.downIconColor,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    const VerticalSpeacing(10.0),
-                    Container(
-                      height: 37,
-                      width: double.infinity,
-                      color: AppColor.boxTxColor.withOpacity(0.1),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Busses List',
-                              style: GoogleFonts.getFont(
-                                "Urbanist",
-                                textStyle: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColor.boxTxColor,
+                      const VerticalSpeacing(10.0),
+                      Container(
+                        height: 37,
+                        width: double.infinity,
+                        color: AppColor.boxTxColor.withOpacity(0.1),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Busses List',
+                                style: GoogleFonts.getFont(
+                                  "Urbanist",
+                                  textStyle: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColor.boxTxColor,
+                                  ),
                                 ),
                               ),
-                            ),
-                            const Icon(
-                              Icons.expand_more_outlined,
-                              color: AppColor.downIconColor,
-                            ),
-                          ],
+                              const Icon(
+                                Icons.expand_more_outlined,
+                                color: AppColor.downIconColor,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],

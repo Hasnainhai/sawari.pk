@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sawari_pk/res/components/profile_box.dart';
+import 'package:sawari_pk/res/components/vertical_speacing.dart';
 import '../../res/components/colors.dart';
 import '../../res/components/icon_box.dart';
+import 'widgets/bookingCard.dart';
 
 class BookingView extends StatefulWidget {
   const BookingView({super.key});
@@ -74,9 +76,7 @@ class _BookingViewState extends State<BookingView>
                   unselectedLabelColor: AppColor.textColor,
                   controller: _tabController,
                   tabs: const <Widget>[
-                    Tab(
-                      text: 'Upcoming',
-                    ),
+                    Tab(text: 'Upcoming'),
                     Tab(text: 'Completed'),
                     Tab(text: 'Cancelled'),
                   ],
@@ -87,33 +87,64 @@ class _BookingViewState extends State<BookingView>
         ),
       ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 16.0, right: 16.0),
           child: TabBarView(
-            controller: _tabController,
-            children: const <Widget>[
-              Center(
-                child: Text(
-                  'Display Upcoming Bookings',
-                  style: TextStyle(fontSize: 18),
-                ),
+        controller: _tabController,
+        children: const <Widget>[
+          // Tab 1: Upcoming Bookings
+          SizedBox(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Column(
+                children: [
+                  VerticalSpeacing(20.0),
+                  BookingCard(),
+                  VerticalSpeacing(10.0),
+                  BookingCard(),
+                  VerticalSpeacing(10.0),
+                  BookingCard(),
+                  VerticalSpeacing(30.0),
+                ],
               ),
-              Center(
-                child: Text(
-                  'Display Completed Bookings',
-                  style: TextStyle(fontSize: 18),
-                ),
-              ),
-              Center(
-                child: Text(
-                  'Display Cancelled Bookings',
-                  style: TextStyle(fontSize: 18),
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
-      ),
+
+          // Tab 2: Completed Bookings
+          SizedBox(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Column(
+                children: [
+                  VerticalSpeacing(20.0),
+                  BookingCard(),
+                  VerticalSpeacing(10.0),
+                  BookingCard(),
+                  VerticalSpeacing(10.0),
+                  BookingCard(),
+                  VerticalSpeacing(30.0),
+                ],
+              ),
+            ),
+          ),
+
+          // Tab 3: Cancelled Bookings
+          SizedBox(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Column(
+                children: [
+                  VerticalSpeacing(20.0),
+                  BookingCard(),
+                  VerticalSpeacing(10.0),
+                  BookingCard(),
+                  VerticalSpeacing(10.0),
+                  BookingCard(),
+                  VerticalSpeacing(30.0),
+                ],
+              ),
+            ),
+          ),
+        ],
+      )),
     );
   }
 }
