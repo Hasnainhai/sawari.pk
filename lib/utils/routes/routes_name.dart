@@ -11,4 +11,5 @@ class RoutesName {
   static const String profile = 'profile_view';
 
   static const String busDetail = 'bus_detail_view';
+  static const String seatSelection = 'seat_selection_view';
 }

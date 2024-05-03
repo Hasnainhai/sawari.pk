@@ -7,6 +7,7 @@ import 'package:sawari_pk/view/home/bus_detail_view.dart';
 import 'package:sawari_pk/view/home/dashboard/bottom_bar.dart';
 
 import 'package:sawari_pk/view/home/home_view.dart';
+import 'package:sawari_pk/view/home/seat_selection.dart';
 import 'package:sawari_pk/view/notifications/notifications.dart';
 import 'package:sawari_pk/view/profile/profile.dart';
 
@@ -51,6 +52,9 @@ class Routes {
       case RoutesName.busDetail:
         return MaterialPageRoute(
             builder: (BuildContext context) => const BusDetailView());
+      case RoutesName.seatSelection:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => const SelectSeatView());
 
       default:
         return MaterialPageRoute(builder: (_) {
