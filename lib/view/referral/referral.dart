@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sawari_pk/res/components/colors.dart';
-import 'package:sawari_pk/res/components/custom_text_field.dart';
 import 'package:sawari_pk/res/components/icon_box.dart';
+import 'package:sawari_pk/res/components/profile_box.dart';
 
 import '../../res/components/rounded_button.dart';
 import '../../res/components/vertical_speacing.dart';
+import 'widgets/add_friend.dart';
 
 class ReferralView extends StatelessWidget {
   const ReferralView({super.key});
@@ -48,17 +49,14 @@ class ReferralView extends StatelessWidget {
           child: Column(
         children: [
           const VerticalSpeacing(20),
-          Padding(
-            padding: const EdgeInsets.only(left: 20.0, right: 20),
-            child: Image.asset(
-              "images/earn.png",
-              height: 162,
-              width: 229,
-            ),
+          Image.asset(
+            "images/earn.png",
+            height: 219,
+            width: 333,
           ),
           const VerticalSpeacing(40),
           Container(
-            height: 495,
+            height: 470,
             width: MediaQuery.of(context).size.width,
             decoration: const BoxDecoration(
               color: Color(0xff05324D),
@@ -70,23 +68,53 @@ class ReferralView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // const Padding(
-                //   padding: EdgeInsets.only(
-                //     left: 20.0,
-                //     right: 20,
-                //   ),
-                //   child: Row(
-                //     children: [
-                //       TextFieldCustom(
-                //         maxLines: 2,
-                //         text: 'Your Promo Code is\n1234567890',
-                //       ),
-                //     ],
-                //   ),
-                // ),
-                // const Spacer(),
+                const VerticalSpeacing(20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Container(
+                      height: 52,
+                      width: 250,
+                      decoration: BoxDecoration(
+                        color: AppColor.whiteColor,
+                        borderRadius: BorderRadius.circular(6.0),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Your Promo Code is:\n8939289839",
+                              style: GoogleFonts.getFont(
+                                "Urbanist",
+                                textStyle: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColor.textColor,
+                                ),
+                              ),
+                            ),
+                            IconButton(
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.copy_outlined,
+                                  color: AppColor.titleColor,
+                                ))
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 52,
+                      width: 95,
+                      child: RoundedButton(title: 'Share', onpress: () {}),
+                    ),
+                  ],
+                ),
+                const Spacer(),
                 Container(
-                  height: 399,
+                  height: 380,
                   decoration: const BoxDecoration(
                     color: AppColor.whiteColor,
                     borderRadius: BorderRadius.only(
@@ -100,64 +128,36 @@ class ReferralView extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            "Booking Details",
-                            style: GoogleFonts.getFont(
-                              "Urbanist",
-                              textStyle: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                color: AppColor.titleColor,
-                              ),
-                            ),
-                          ),
-                          const VerticalSpeacing(10),
-                          Container(
-                            width: MediaQuery.of(context).size.width,
-                            decoration: BoxDecoration(
-                              color: Colors.transparent,
-                              border: Border.all(
-                                color: AppColor.titleColor,
-                                width: 1,
-                              ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: const Padding(
-                              padding: EdgeInsets.all(20.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [],
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [],
-                                      ),
-                                    ],
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Invite a friend",
+                                style: GoogleFonts.getFont(
+                                  "Urbanist",
+                                  textStyle: const TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700,
+                                    color: AppColor.titleColor,
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.insert_invitation_outlined,
+                                  color: AppColor.titleColor,
+                                ),
+                              ),
+                            ],
                           ),
-                          const VerticalSpeacing(
-                            40,
-                          ),
-                          RoundedButton(title: "Book Now", onpress: () {}),
-                          const VerticalSpeacing(
-                            40,
-                          ),
+                          const AddFriend(),
+                          const AddFriend(),
+                          const AddFriend(),
+                          const AddFriend(),
+                          const AddFriend(),
+                          const AddFriend(),
+                          const VerticalSpeacing(40),
                         ],
                       ),
                     ),
