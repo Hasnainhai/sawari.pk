@@ -1,15 +1,83 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sawari_pk/res/components/colors.dart';
 import 'package:sawari_pk/res/components/icon_box.dart';
-import 'package:sawari_pk/res/components/profile_box.dart';
-
 import '../../res/components/rounded_button.dart';
 import '../../res/components/vertical_speacing.dart';
 import 'widgets/add_friend.dart';
 
-class ReferralView extends StatelessWidget {
+class ReferralView extends StatefulWidget {
   const ReferralView({super.key});
+
+  @override
+  State<ReferralView> createState() => _ReferralViewState();
+}
+
+class _ReferralViewState extends State<ReferralView> {
+  void _showPopup(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (BuildContext context) {
+        return Stack(
+          children: [
+            // fully blur with ImageFilter
+            BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+              child: Container(
+                color: Colors.transparent,
+              ),
+            ),
+            // Blurred background
+            ModalBarrier(
+              color: Colors.black.withOpacity(0.1),
+              dismissible: true,
+            ),
+            Center(
+              child: Container(
+                color: AppColor.whiteColor,
+                height: 400,
+                width: 359,
+                child: const Padding(
+                  padding: EdgeInsets.all(20.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'How it Works',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: AppColor.primaryColor,
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            'If a customer books a ticket for another person, it will be added to his profile that he has booked 1 seat. As he continues booking tickets for others, he will earn tokens or money. Once he crosses a certain number of ticket bookings (e.g., 50 tickets), he will receive tokens that he can use to book any ticket on our platform. After reaching the threshold of 50 tickets, he becomes our partner and will receive bonuses, cash, or tokens for every ticket he books.',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: AppColor.textColor,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +176,13 @@ class ReferralView extends StatelessWidget {
                     SizedBox(
                       height: 52,
                       width: 95,
-                      child: RoundedButton(title: 'Share', onpress: () {}),
+                      child: RoundedButton(
+                          title: 'Share',
+                          onpress: () {
+                            setState(() {
+                              _showPopup(context);
+                            });
+                          }),
                     ),
                   ],
                 ),
