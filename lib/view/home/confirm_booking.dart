@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sawari_pk/res/components/colors.dart';
 import 'package:sawari_pk/res/components/rounded_button.dart';
 import 'package:sawari_pk/res/components/vertical_speacing.dart';
+import 'package:sawari_pk/utils/routes/routes_name.dart';
 
 class ConfirmDialog extends StatelessWidget {
   const ConfirmDialog({super.key});
@@ -93,7 +92,14 @@ class ConfirmDialog extends StatelessWidget {
                   width: 10,
                 ),
                 Expanded(
-                    child: RoundedButton(title: "Confirm", onpress: () {})),
+                    child: RoundedButton(
+                        title: "Confirm",
+                        onpress: () {
+                          Navigator.pushNamed(
+                            context,
+                            RoutesName.paymentMethod,
+                          );
+                        })),
               ],
             ),
             const VerticalSpeacing(60),
