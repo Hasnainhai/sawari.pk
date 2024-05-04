@@ -11,6 +11,7 @@ import 'package:sawari_pk/view/home/home_view.dart';
 import 'package:sawari_pk/view/home/seat_selection.dart';
 import 'package:sawari_pk/view/notifications/notifications.dart';
 import 'package:sawari_pk/view/profile/profile.dart';
+import 'package:sawari_pk/view/referral/referral.dart';
 
 import '../../view/onboarding/onboarding_view1.dart';
 
@@ -59,6 +60,9 @@ class Routes {
       case RoutesName.bookingDetailview:
         return MaterialPageRoute(
             builder: (BuildContext context) => const BookingDetailView());
+      case RoutesName.referral:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => const ReferralView());
 
       default:
         return MaterialPageRoute(builder: (_) {

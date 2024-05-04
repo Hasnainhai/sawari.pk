@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sawari_pk/res/components/colors.dart';
 import 'package:sawari_pk/res/components/custom_text_field.dart';
@@ -113,7 +112,7 @@ class LoginView extends StatelessWidget {
                   title: "Sign in",
                   onpress: () {
                     Navigator.pushNamedAndRemoveUntil(
-                        context, RoutesName.home, (route) => false);
+                        context, RoutesName.dashboard, (route) => false);
                   }),
               const VerticalSpeacing(
                 16,

@@ -74,7 +74,7 @@ class SignupView extends StatelessWidget {
                     title: "Sign in",
                     onpress: () {
                       Navigator.pushNamedAndRemoveUntil(
-                          context, RoutesName.home, (route) => false);
+                          context, RoutesName.dashboard, (route) => false);
                     }),
                 const VerticalSpeacing(30),
                 Row(
