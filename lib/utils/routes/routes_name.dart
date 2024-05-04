@@ -13,5 +13,6 @@ class RoutesName {
   static const String busDetail = 'bus_detail_view';
   static const String seatSelection = 'seat_selection_view';
   static const String bookingDetailview = 'booking_detail_view';
+  static const String paymentMethod = 'Payment_method_view';
   static const String referral = 'referral_view';
 }

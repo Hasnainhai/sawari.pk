@@ -8,6 +8,7 @@ import 'package:sawari_pk/view/home/bus_detail_view.dart';
 import 'package:sawari_pk/view/home/dashboard/bottom_bar.dart';
 
 import 'package:sawari_pk/view/home/home_view.dart';
+import 'package:sawari_pk/view/home/payment_method.dart';
 import 'package:sawari_pk/view/home/seat_selection.dart';
 import 'package:sawari_pk/view/notifications/notifications.dart';
 import 'package:sawari_pk/view/profile/profile.dart';
@@ -63,6 +64,9 @@ class Routes {
       case RoutesName.referral:
         return MaterialPageRoute(
             builder: (BuildContext context) => const ReferralView());
+      case RoutesName.paymentMethod:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => const PaymentMethod());
 
       default:
         return MaterialPageRoute(builder: (_) {
