@@ -231,7 +231,6 @@ class _ReferralViewState extends State<ReferralView> {
                           const AddFriend(),
                           const AddFriend(),
                           const AddFriend(),
-                          const VerticalSpeacing(40),
                         ],
                       ),
                     ),
