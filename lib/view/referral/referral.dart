@@ -236,6 +236,7 @@ class _ReferralViewState extends State<ReferralView> {
                             const VerticalSpeacing(40),
                           ],
                         ),
+
                       ),
                     ),
                   ),
