@@ -1,8 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sawari_pk/res/components/colors.dart';
 import 'package:sawari_pk/res/components/icon_box.dart';
 import 'package:sawari_pk/res/components/profile_box.dart';
+import 'package:sawari_pk/res/components/rounded_button.dart';
 import 'package:sawari_pk/res/components/vertical_speacing.dart';
 import 'package:sawari_pk/view/home/widgets/payment_widget.dart';
 
@@ -14,8 +17,77 @@ class PaymentMethod extends StatefulWidget {
 }
 
 class _PaymentMethodState extends State<PaymentMethod> {
-  bool button1 = true;
+  bool button1 = false;
   bool button2 = false;
+  void _showPopup(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (BuildContext context) {
+        return Stack(
+          children: [
+            // fully blur with ImageFilter
+            BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+              child: Container(
+                color: Colors.transparent,
+              ),
+            ),
+            // Blurred background
+            ModalBarrier(
+              color: Colors.black.withOpacity(0.1),
+              dismissible: true,
+            ),
+            Center(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: AppColor.whiteColor,
+                  borderRadius: BorderRadius.circular(
+                    10,
+                  ),
+                ),
+                width: 335,
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const VerticalSpeacing(24),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Select a payment method",
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.getFont(
+                              "Urbanist",
+                              textStyle: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w700,
+                                color: AppColor.titleColor,
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Icon(Icons.close))
+                        ],
+                      ),
+                      const VerticalSpeacing(60),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,6 +138,9 @@ class _PaymentMethodState extends State<PaymentMethod> {
                 setState(() {
                   button1 = !button1;
                   button2 = false;
+                  if (button1 == true) {
+                    _showPopup(context);
+                  }
                 });
               },
               child: PaymentWidget(
