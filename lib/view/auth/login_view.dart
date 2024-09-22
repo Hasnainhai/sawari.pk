@@ -50,11 +50,11 @@ class LoginView extends StatelessWidget {
                 ),
               ),
               const VerticalSpeacing(30),
-              const TextFieldCustom(
+               TextFieldCustom(
                 maxLines: 2,
                 text: "Email",
               ),
-              const TextFieldCustom(
+               TextFieldCustom(
                 maxLines: 2,
                 text: "password",
                 obscureText: true,
