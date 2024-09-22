@@ -190,7 +190,7 @@ class _SignupViewState extends State<SignupView> {
                         );
                       },
                       child: Text(
-                        "Sign in",
+                        "Sign up",
                         style: GoogleFonts.getFont(
                           "Urbanist",
                           textStyle: const TextStyle(

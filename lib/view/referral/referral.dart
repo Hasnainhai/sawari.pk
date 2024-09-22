@@ -114,132 +114,137 @@ class _ReferralViewState extends State<ReferralView> {
         centerTitle: true,
       ),
       body: SafeArea(
-          child: Column(
-        children: [
-          const VerticalSpeacing(20),
-          Image.asset(
-            "images/earn.png",
-            height: 219,
-            width: 333,
-          ),
-          const VerticalSpeacing(40),
-          Container(
-            height: 470,
-            width: MediaQuery.of(context).size.width,
-            decoration: const BoxDecoration(
-              color: Color(0xff05324D),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
-              ),
+          child: SingleChildScrollView(
+        physics: const NeverScrollableScrollPhysics(),
+        child: Column(
+          children: [
+            const VerticalSpeacing(20),
+            Image.asset(
+              "images/earn.png",
+              height: 219,
+              width: 333,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const VerticalSpeacing(20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                      height: 52,
-                      width: 250,
-                      decoration: BoxDecoration(
-                        color: AppColor.whiteColor,
-                        borderRadius: BorderRadius.circular(6.0),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Your Promo Code is:\n8939289839",
-                              style: GoogleFonts.getFont(
-                                "Urbanist",
-                                textStyle: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w700,
-                                  color: AppColor.textColor,
-                                ),
-                              ),
-                            ),
-                            IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.copy_outlined,
-                                  color: AppColor.titleColor,
-                                ))
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 52,
-                      width: 95,
-                      child: RoundedButton(
-                          title: 'Share',
-                          onpress: () {
-                            setState(() {
-                              _showPopup(context);
-                            });
-                          }),
-                    ),
-                  ],
+            const VerticalSpeacing(40),
+            Container(
+              height: 470,
+              width: MediaQuery.of(context).size.width,
+              decoration: const BoxDecoration(
+                color: Color(0xff05324D),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
                 ),
-                const Spacer(),
-                Container(
-                  height: 380,
-                  decoration: const BoxDecoration(
-                    color: AppColor.whiteColor,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
-                    ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const VerticalSpeacing(20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        height: 52,
+                        width: 250,
+                        decoration: BoxDecoration(
+                          color: AppColor.whiteColor,
+                          borderRadius: BorderRadius.circular(6.0),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Invite a friend",
+                                "Your Promo Code is:\n8939289839",
                                 style: GoogleFonts.getFont(
                                   "Urbanist",
                                   textStyle: const TextStyle(
-                                    fontSize: 18,
+                                    fontSize: 14,
                                     fontWeight: FontWeight.w700,
-                                    color: AppColor.titleColor,
+                                    color: AppColor.textColor,
                                   ),
                                 ),
                               ),
                               IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.insert_invitation_outlined,
-                                  color: AppColor.titleColor,
-                                ),
-                              ),
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                    Icons.copy_outlined,
+                                    color: AppColor.titleColor,
+                                  ))
                             ],
                           ),
-                          const AddFriend(),
-                          const AddFriend(),
-                          const AddFriend(),
-                          const AddFriend(),
-                          const AddFriend(),
-                          const AddFriend(),
-                        ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 52,
+                        width: 95,
+                        child: RoundedButton(
+                            title: 'Share',
+                            onpress: () {
+                              setState(() {
+                                _showPopup(context);
+                              });
+                            }),
+                      ),
+                    ],
+                  ),
+                  const Spacer(),
+                  Container(
+                    height: 380,
+                    decoration: const BoxDecoration(
+                      color: AppColor.whiteColor,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Invite a friend",
+                                  style: GoogleFonts.getFont(
+                                    "Urbanist",
+                                    textStyle: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColor.titleColor,
+                                    ),
+                                  ),
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                    Icons.insert_invitation_outlined,
+                                    color: AppColor.titleColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const AddFriend(),
+                            const AddFriend(),
+                            const AddFriend(),
+                            const AddFriend(),
+                            const AddFriend(),
+                            const AddFriend(),
+                            const VerticalSpeacing(40),
+                          ],
+                        ),
+
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          )
-        ],
+                ],
+              ),
+            )
+          ],
+        ),
       )),
     );
   }
