@@ -39,6 +39,8 @@ class NetworkApiService extends BaseApiServices {
       case 200:
         dynamic responseJson = jsonDecode(response.body);
         return responseJson;
+      case 204:
+        return {"message": "No content, operation successful"};
       case 400:
         return (response.body.toString());
       default:

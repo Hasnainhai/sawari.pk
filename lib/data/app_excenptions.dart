@@ -1,8 +1,9 @@
 class AppException implements Exception {
-  final _mesg;
-  final _prefix;
+  final String? _mesg;
+  final String? _prefix;
   AppException([this._mesg, this._prefix]);
 
+  @override
   String toString() {
     return '$_mesg$_prefix';
   }
