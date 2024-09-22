@@ -1,16 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:sawari_pk/res/components/colors.dart';
 import 'package:sawari_pk/res/components/custom_text_field.dart';
 import 'package:sawari_pk/res/components/rounded_button.dart';
 import 'package:sawari_pk/res/components/vertical_speacing.dart';
 import 'package:sawari_pk/utils/routes/routes_name.dart';
 
-class LoginView extends StatelessWidget {
+import '../../utils/routes/utils.dart';
+import '../../view_model/auth_view_model.dart';
+
+class LoginView extends StatefulWidget {
   const LoginView({super.key});
 
   @override
+  State<LoginView> createState() => _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> {
+  final ValueNotifier<bool> _obscurePassword = ValueNotifier<bool>(true);
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final FocusNode _emailFocusNode = FocusNode();
+
+  final FocusNode _passwordFocusNode = FocusNode();
+  @override
+  void dispose() {
+    super.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _emailFocusNode.dispose();
+    _passwordFocusNode.dispose();
+    _obscurePassword.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final authViewModel = Provider.of<AuthViewModel>(context);
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -50,11 +76,19 @@ class LoginView extends StatelessWidget {
                 ),
               ),
               const VerticalSpeacing(30),
-               TextFieldCustom(
+              TextFieldCustom(
+                keyboardType: TextInputType.emailAddress,
+                focusNode: _emailFocusNode,
+                controller: _emailController,
                 maxLines: 2,
                 text: "Email",
+                onFieldSubmitted: (value) {
+                  Utils.focusNode(context, _emailFocusNode, _passwordFocusNode);
+                },
               ),
-               TextFieldCustom(
+              TextFieldCustom(
+                focusNode: _passwordFocusNode,
+                controller: _passwordController,
                 maxLines: 2,
                 text: "password",
                 obscureText: true,
@@ -111,8 +145,25 @@ class LoginView extends StatelessWidget {
               RoundedButton(
                   title: "Sign in",
                   onpress: () {
-                    Navigator.pushNamedAndRemoveUntil(
-                        context, RoutesName.dashboard, (route) => false);
+                    if (_emailController.text.isEmpty) {
+                      Utils.flushBarErrorMessage(
+                          'please enter your email', context);
+                    } else if (_passwordController.text.isEmpty) {
+                      Utils.flushBarErrorMessage(
+                          'please enter your password', context);
+                    } else if (_passwordController.text.length < 6) {
+                      Utils.flushBarErrorMessage(
+                          'plase enter more than six digits', context);
+                    } else {
+                      Map data = {
+                        'email': _emailController.text.toString(),
+                        'password': _passwordController.text.toString(),
+                      };
+                      if (data.isNotEmpty) {
+                        authViewModel.loginApi(data, context);
+                        print('Successfully Login');
+                      }
+                    }
                   }),
               const VerticalSpeacing(
                 16,
@@ -128,7 +179,7 @@ class LoginView extends StatelessWidget {
                       color: AppColor.blackColor.withOpacity(0.1),
                       spreadRadius: 0,
                       blurRadius: 4,
-                      offset: const Offset(0, 1), // changes position of shadow
+                      offset: const Offset(0, 1),
                     ),
                   ],
                 ),
