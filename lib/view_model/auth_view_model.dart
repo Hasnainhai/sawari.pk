@@ -29,6 +29,7 @@ class AuthViewModel with ChangeNotifier {
       Utils.flushBarErrorMessage(value.toString(), context);
       Navigator.pushNamedAndRemoveUntil(
           context, RoutesName.dashboard, (route) => false);
+      Utils.toastMessage('SuccessFully Login');
       if (kDebugMode) {
         print(value.toString());
       }
@@ -50,6 +51,7 @@ class AuthViewModel with ChangeNotifier {
         context,
         RoutesName.login,
       );
+      Utils.toastMessage('SuccessFully Signup please login');
 
       if (kDebugMode) {
         print(value.toString());
