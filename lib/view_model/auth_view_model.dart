@@ -14,7 +14,6 @@ class AuthViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-
   bool _signupLoading = false;
   bool get signupLoading => _signupLoading;
 
@@ -28,7 +27,8 @@ class AuthViewModel with ChangeNotifier {
     _myRepo.loginApi(data).then((value) {
       setLoading(false);
       Utils.flushBarErrorMessage(value.toString(), context);
-      Navigator.pushNamed(context, RoutesName.home);
+      Navigator.pushNamedAndRemoveUntil(
+          context, RoutesName.dashboard, (route) => false);
       if (kDebugMode) {
         print(value.toString());
       }
@@ -43,11 +43,13 @@ class AuthViewModel with ChangeNotifier {
 
   Future<void> signUpApi(dynamic data, BuildContext context) async {
     setSignUpLaoding(true);
-    _myRepo.loginApi(data).then((value) {
+    _myRepo.signUpApi(data).then((value) {
       setSignUpLaoding(false);
       Utils.flushBarErrorMessage(value.toString(), context);
-      Navigator.pushNamedAndRemoveUntil(
-          context, RoutesName.dashboard, (route) => false);
+      Navigator.pushNamed(
+        context,
+        RoutesName.login,
+      );
 
       if (kDebugMode) {
         print(value.toString());

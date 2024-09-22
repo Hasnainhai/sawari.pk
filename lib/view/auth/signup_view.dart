@@ -27,7 +27,6 @@ class _SignupViewState extends State<SignupView> {
   final TextEditingController _nameController = TextEditingController();
   final FocusNode _emailFocusNode = FocusNode();
   final FocusNode _nameFocusNode = FocusNode();
-
   final FocusNode _passwordFocusNode = FocusNode();
   final FocusNode _confirmPasswordFocusNode = FocusNode();
   @override
@@ -190,7 +189,7 @@ class _SignupViewState extends State<SignupView> {
                         );
                       },
                       child: Text(
-                        "Sign up",
+                        "Log In",
                         style: GoogleFonts.getFont(
                           "Urbanist",
                           textStyle: const TextStyle(
