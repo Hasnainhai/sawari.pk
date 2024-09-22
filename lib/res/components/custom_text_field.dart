@@ -3,16 +3,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sawari_pk/res/components/colors.dart';
 
 class TextFieldCustom extends StatefulWidget {
-  const TextFieldCustom({
-    super.key,
-    this.hintText,
-    required int maxLines,
-    required this.text,
-    this.controller,
-    this.keyboardType,
-    this.obscureText = false,
-    this.validator,
-  });
+  TextFieldCustom(
+      {super.key,
+      this.hintText,
+      required int maxLines,
+      required this.text,
+      this.controller,
+      this.keyboardType,
+      this.obscureText = false,
+      this.validator,
+      this.focusNode,
+      this.onFieldSubmitted});
 
   final String text;
   final TextEditingController? controller;
@@ -20,6 +21,8 @@ class TextFieldCustom extends StatefulWidget {
   final bool obscureText;
   final String? hintText;
   final String? Function(String?)? validator;
+  FocusNode? focusNode;
+  ValueChanged<String>? onFieldSubmitted;
   @override
   State<TextFieldCustom> createState() => _TextFieldCustomState();
 }
@@ -46,6 +49,7 @@ class _TextFieldCustomState extends State<TextFieldCustom> {
           ),
           const SizedBox(height: 8),
           TextFormField(
+            focusNode: widget.focusNode,
             keyboardType: widget.keyboardType,
             obscureText: (widget.obscureText && hidden),
             style: const TextStyle(fontSize: 15),
@@ -81,6 +85,7 @@ class _TextFieldCustomState extends State<TextFieldCustom> {
                 borderRadius: BorderRadius.circular(8),
               ),
             ),
+            onFieldSubmitted: widget.onFieldSubmitted,
             validator: widget.validator,
           ),
         ],

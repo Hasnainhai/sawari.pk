@@ -1,24 +1,25 @@
-// import 'package:flutter/material.dart';
-// import 'package:mvvm/model/user_model.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-// class UserViewModel with ChangeNotifier {
-//   Future<bool> saveUser(UserModel user) async {
-//     final SharedPreferences sp = await SharedPreferences.getInstance();
-//     sp.setString('token', user.token.toString());
-//     notifyListeners();
-//     return true;
-//   }
+import '../model/user_model.dart';
 
-//   Future<UserModel> getUser() async {
-//     final SharedPreferences sp = await SharedPreferences.getInstance();
-//     String? token = sp.getString('token');
+class UserViewModel with ChangeNotifier {
+  Future<bool> saveUser(UserModel user) async {
+    final SharedPreferences sp = await SharedPreferences.getInstance();
+    sp.setString('key', user.token.toString());
+    notifyListeners();
+    return true;
+  }
 
-//     return UserModel(token: token.toString());
-//   }
+  Future<UserModel> getUser() async {
+    final SharedPreferences sp = await SharedPreferences.getInstance();
+    String? token = sp.getString('key');
 
-//   Future<bool> removerUser() async {
-//     final SharedPreferences sp = await SharedPreferences.getInstance();
-//     return sp.clear();
-//   }
-// }
+    return UserModel(token: token.toString());
+  }
+
+  Future<bool> removerUser() async {
+    final SharedPreferences sp = await SharedPreferences.getInstance();
+    return sp.clear();
+  }
+}
