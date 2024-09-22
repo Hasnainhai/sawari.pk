@@ -99,7 +99,7 @@ class SignupView extends StatelessWidget {
                         );
                       },
                       child: Text(
-                        "Sign in",
+                        "Sign up",
                         style: GoogleFonts.getFont(
                           "Urbanist",
                           textStyle: const TextStyle(
