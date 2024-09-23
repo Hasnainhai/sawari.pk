@@ -1,6 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sawari_pk/view_model/user_view_model.dart';
 
+import '../model/user_model.dart';
 import '../repository/auth_repository.dart';
 import '../utils/routes/routes_name.dart';
 import '../utils/routes/utils.dart';
@@ -25,11 +28,18 @@ class AuthViewModel with ChangeNotifier {
   Future<void> loginApi(dynamic data, BuildContext context) async {
     setLoading(true);
     _myRepo.loginApi(data).then((value) {
+      print('...........................data $data .....................');
       setLoading(false);
-      Utils.flushBarErrorMessage(value.toString(), context);
+      final userPrefrences = Provider.of<UserViewModel>(context, listen: false);
+      userPrefrences.saveUser(
+        UserModel(token: value['token'].toString()),
+      );
+      print('..............${value['token']}.................');
+      Utils.flushBarErrorMessage(
+          '${value.toString()} ${value['token']}', context);
       Navigator.pushNamedAndRemoveUntil(
           context, RoutesName.dashboard, (route) => false);
-      Utils.toastMessage('SuccessFully Login');
+      Utils.toastMessage('SuccessFully LogIn Token: ${value.toString()},');
       if (kDebugMode) {
         print(value.toString());
       }
