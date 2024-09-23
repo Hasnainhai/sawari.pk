@@ -144,7 +144,7 @@ class _LoginViewState extends State<LoginView> {
                   ],
                 ),
                 const VerticalSpeacing(30),
-                authViewModel.signupLoading
+                authViewModel.isloading
                     ? const Center(
                         child: CircularProgressIndicator(),
                       )

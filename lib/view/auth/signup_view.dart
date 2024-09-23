@@ -164,6 +164,7 @@ class _SignupViewState extends State<SignupView> {
                             };
                             authViewModel.signUpApi(data, context);
                             print('SuccessFully Register');
+
                           }
                         }),
                 const VerticalSpeacing(30),

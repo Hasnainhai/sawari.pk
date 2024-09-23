@@ -28,18 +28,25 @@ class AuthViewModel with ChangeNotifier {
   Future<void> loginApi(dynamic data, BuildContext context) async {
     setLoading(true);
     _myRepo.loginApi(data).then((value) {
-      print('...........................data $data .....................');
+      if (kDebugMode) {
+        print('...........................data $data .....................');
+      }
       setLoading(false);
       final userPrefrences = Provider.of<UserViewModel>(context, listen: false);
       userPrefrences.saveUser(
         UserModel(token: value['token'].toString()),
       );
-      print('..............${value['token']}.................');
+      if (kDebugMode) {
+        print('..............${value['token']}.................');
+      }
       Utils.flushBarErrorMessage(
           '${value.toString()} ${value['token']}', context);
       Navigator.pushNamedAndRemoveUntil(
           context, RoutesName.dashboard, (route) => false);
       Utils.toastMessage('SuccessFully LogIn Token: ${value.toString()},');
+      if (kDebugMode) {
+        print('................token: ${value.toString()}');
+      }
       if (kDebugMode) {
         print(value.toString());
       }
