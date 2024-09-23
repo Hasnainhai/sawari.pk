@@ -41,165 +41,101 @@ class _LoginViewState extends State<LoginView> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(
-                child: Image.asset(
-                  "images/logo.png",
-                  height: 66,
-                  width: 168,
-                ),
-              ),
-              const VerticalSpeacing(60),
-              Text(
-                "Sign In",
-                style: GoogleFonts.getFont(
-                  "Urbanist",
-                  textStyle: const TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.w700,
-                    color: AppColor.titleColor,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: Image.asset(
+                    "images/logo.png",
+                    height: 66,
+                    width: 168,
                   ),
                 ),
-              ),
-              const VerticalSpeacing(8),
-              Text(
-                "Please fill your detail to access your account.",
-                style: GoogleFonts.getFont(
-                  "Urbanist",
-                  textStyle: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: AppColor.textColor,
-                  ),
-                ),
-              ),
-              const VerticalSpeacing(30),
-              TextFieldCustom(
-                keyboardType: TextInputType.emailAddress,
-                focusNode: _emailFocusNode,
-                controller: _emailController,
-                maxLines: 2,
-                text: "Email",
-                onFieldSubmitted: (value) {
-                  Utils.focusNode(context, _emailFocusNode, _passwordFocusNode);
-                },
-              ),
-              TextFieldCustom(
-                focusNode: _passwordFocusNode,
-                controller: _passwordController,
-                maxLines: 2,
-                text: "password",
-                obscureText: true,
-              ),
-              const VerticalSpeacing(8),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        height: 16,
-                        width: 16,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: const Color(0xffD0D5DD),
-                          ),
-                          color: AppColor.whiteColor,
-                          borderRadius: BorderRadius.circular(
-                            4,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 8,
-                      ),
-                      Text(
-                        "Remember me",
-                        style: GoogleFonts.getFont(
-                          "Urbanist",
-                          textStyle: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                            color: AppColor.titleColor,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Text(
-                    "Forgot Password?",
-                    style: GoogleFonts.getFont(
-                      "Urbanist",
-                      textStyle: const TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                        color: AppColor.titleColor,
-                      ),
+                const VerticalSpeacing(60),
+                Text(
+                  "Sign In",
+                  style: GoogleFonts.getFont(
+                    "Urbanist",
+                    textStyle: const TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.w700,
+                      color: AppColor.titleColor,
                     ),
                   ),
-                ],
-              ),
-              const VerticalSpeacing(30),
-              RoundedButton(
-                  title: "Sign in",
-                  onpress: () {
-                    if (_emailController.text.isEmpty) {
-                      Utils.flushBarErrorMessage(
-                          'please enter your email', context);
-                    } else if (_passwordController.text.isEmpty) {
-                      Utils.flushBarErrorMessage(
-                          'please enter your password', context);
-                    } else if (_passwordController.text.length < 6) {
-                      Utils.flushBarErrorMessage(
-                          'plase enter more than six digits', context);
-                    } else {
-                      Map data = {
-                        'email': _emailController.text.toString(),
-                        'password': _passwordController.text.toString(),
-                      };
-                      if (data.isNotEmpty) {
-                        authViewModel.loginApi(data, context);
-                        print('Successfully Login');
-                      }
-                    }
-                  }),
-              const VerticalSpeacing(
-                16,
-              ),
-              Container(
-                height: 46,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: AppColor.whiteColor,
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColor.blackColor.withOpacity(0.1),
-                      spreadRadius: 0,
-                      blurRadius: 4,
-                      offset: const Offset(0, 1),
-                    ),
-                  ],
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                const VerticalSpeacing(8),
+                Text(
+                  "Please fill your detail to access your account.",
+                  style: GoogleFonts.getFont(
+                    "Urbanist",
+                    textStyle: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: AppColor.textColor,
+                    ),
+                  ),
+                ),
+                const VerticalSpeacing(30),
+                TextFieldCustom(
+                  keyboardType: TextInputType.emailAddress,
+                  focusNode: _emailFocusNode,
+                  controller: _emailController,
+                  maxLines: 2,
+                  text: "Email",
+                  onFieldSubmitted: (value) {
+                    Utils.focusNode(
+                        context, _emailFocusNode, _passwordFocusNode);
+                  },
+                ),
+                TextFieldCustom(
+                  focusNode: _passwordFocusNode,
+                  controller: _passwordController,
+                  maxLines: 2,
+                  text: "password",
+                  obscureText: true,
+                ),
+                const VerticalSpeacing(8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image.asset(
-                      "images/google.png",
-                      height: 24,
-                      width: 24,
-                    ),
-                    const SizedBox(
-                      width: 8,
+                    Row(
+                      children: [
+                        Container(
+                          height: 16,
+                          width: 16,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: const Color(0xffD0D5DD),
+                            ),
+                            color: AppColor.whiteColor,
+                            borderRadius: BorderRadius.circular(
+                              4,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          "Remember me",
+                          style: GoogleFonts.getFont(
+                            "Urbanist",
+                            textStyle: const TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              color: AppColor.titleColor,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     Text(
-                      "Sign in with Google",
+                      "Forgot Password?",
                       style: GoogleFonts.getFont(
                         "Urbanist",
                         textStyle: const TextStyle(
-                          fontSize: 16,
+                          fontSize: 12,
                           fontWeight: FontWeight.w500,
                           color: AppColor.titleColor,
                         ),
@@ -207,44 +143,113 @@ class _LoginViewState extends State<LoginView> {
                     ),
                   ],
                 ),
-              ),
-              const VerticalSpeacing(30),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Don’t have an account?",
-                    style: GoogleFonts.getFont(
-                      "Urbanist",
-                      textStyle: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: AppColor.titleColor,
+                const VerticalSpeacing(30),
+                authViewModel.signupLoading
+                    ? const Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : RoundedButton(
+                        title: "Sign in",
+                        onpress: () {
+                          if (_emailController.text.isEmpty) {
+                            Utils.flushBarErrorMessage(
+                                'please enter your email', context);
+                          } else if (_passwordController.text.isEmpty) {
+                            Utils.flushBarErrorMessage(
+                                'please enter your password', context);
+                          } else if (_passwordController.text.length < 6) {
+                            Utils.flushBarErrorMessage(
+                                'plase enter more than six digits', context);
+                          } else {
+                            Map data = {
+                              'email': _emailController.text.toString(),
+                              'password': _passwordController.text.toString(),
+                            };
+
+                            authViewModel.loginApi(data, context);
+                          }
+                        }),
+                const VerticalSpeacing(
+                  16,
+                ),
+                Container(
+                  height: 46,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: AppColor.whiteColor,
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColor.blackColor.withOpacity(0.1),
+                        spreadRadius: 0,
+                        blurRadius: 4,
+                        offset: const Offset(0, 1),
                       ),
-                    ),
+                    ],
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(
-                        context,
-                        RoutesName.signup,
-                      );
-                    },
-                    child: Text(
-                      "Sign Up",
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "images/google.png",
+                        height: 24,
+                        width: 24,
+                      ),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      Text(
+                        "Sign in with Google",
+                        style: GoogleFonts.getFont(
+                          "Urbanist",
+                          textStyle: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: AppColor.titleColor,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const VerticalSpeacing(30),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Don’t have an account?",
                       style: GoogleFonts.getFont(
                         "Urbanist",
                         textStyle: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          color: AppColor.primaryColor,
+                          color: AppColor.titleColor,
                         ),
                       ),
                     ),
-                  ),
-                ],
-              )
-            ],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          RoutesName.signup,
+                        );
+                      },
+                      child: Text(
+                        "Sign Up",
+                        style: GoogleFonts.getFont(
+                          "Urbanist",
+                          textStyle: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: AppColor.primaryColor,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
