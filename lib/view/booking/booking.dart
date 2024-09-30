@@ -36,8 +36,8 @@ class _BookingViewState extends State<BookingView>
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        leading: const Padding(
-          padding: EdgeInsets.only(left: 10.0, top: 10.0),
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 10.0, top: 10.0),
           child: IconBox(
             icon: Icons.arrow_back_rounded,
             color: AppColor.primaryColor,

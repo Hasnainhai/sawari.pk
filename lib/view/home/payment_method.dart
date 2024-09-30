@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sawari_pk/res/components/colors.dart';
 import 'package:sawari_pk/res/components/icon_box.dart';
 import 'package:sawari_pk/res/components/profile_box.dart';
-import 'package:sawari_pk/res/components/rounded_button.dart';
 import 'package:sawari_pk/res/components/vertical_speacing.dart';
 import 'package:sawari_pk/view/home/widgets/payment_widget.dart';
 
@@ -100,7 +99,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const IconBox(
+                 IconBox(
                   icon: Icons.arrow_back,
                   color: AppColor.primaryColor,
                 ),

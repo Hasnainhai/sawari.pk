@@ -22,7 +22,7 @@ class NotificationsView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const IconBox(
+                  IconBox(
                     icon: Icons.arrow_back_rounded,
                     color: AppColor.primaryColor,
                   ),

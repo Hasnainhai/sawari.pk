@@ -162,7 +162,10 @@ class _BookingDetailViewState extends State<BookingDetailView> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const IconBox(
+                IconBox(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
                   icon: Icons.arrow_back,
                   color: AppColor.primaryColor,
                 ),
@@ -342,9 +345,7 @@ class _BookingDetailViewState extends State<BookingDetailView> {
                               ),
                             ),
                           ),
-                          const VerticalSpeacing(
-                            40,
-                          ),
+                          const VerticalSpeacing(40),
                           RoundedButton(
                               title: "Book Now",
                               onpress: () {
@@ -352,9 +353,7 @@ class _BookingDetailViewState extends State<BookingDetailView> {
                                   _showPopup(context);
                                 });
                               }),
-                          const VerticalSpeacing(
-                            40,
-                          ),
+                          const VerticalSpeacing(20),
                         ],
                       ),
                     ),

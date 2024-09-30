@@ -24,7 +24,7 @@ class SelectSeatView extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const IconBox(
+                IconBox(
                   icon: Icons.arrow_back,
                   color: AppColor.primaryColor,
                 ),

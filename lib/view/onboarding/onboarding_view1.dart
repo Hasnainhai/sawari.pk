@@ -5,8 +5,23 @@ import 'package:sawari_pk/res/components/vertical_speacing.dart';
 import 'package:sawari_pk/utils/routes/routes_name.dart';
 import 'package:sawari_pk/view/onboarding/widgets/on_button.dart';
 
-class OnBoardingView1 extends StatelessWidget {
+import '../../view_model/service/splashServicer.dart';
+
+class OnBoardingView1 extends StatefulWidget {
   const OnBoardingView1({super.key});
+
+  @override
+  State<OnBoardingView1> createState() => _OnBoardingView1State();
+}
+
+class _OnBoardingView1State extends State<OnBoardingView1> {
+  @override
+  void initState() {
+    SplashServices splashServices = SplashServices();
+
+    splashServices.checkAuthenTication(context);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

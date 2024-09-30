@@ -23,7 +23,7 @@ class ProfileView extends StatelessWidget {
                 const VerticalSpeacing(20.0),
                 Row(
                   children: [
-                    const IconBox(
+                    IconBox(
                       icon: Icons.arrow_back_rounded,
                       color: AppColor.primaryColor,
                     ),
