@@ -20,14 +20,19 @@ class OnboardingView2 extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(
-                  "Skip",
-                  style: GoogleFonts.getFont(
-                    "Urbanist",
-                    textStyle: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      color: AppColor.textColor,
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, RoutesName.signup);
+                  },
+                  child: Text(
+                    "Skip",
+                    style: GoogleFonts.getFont(
+                      "Urbanist",
+                      textStyle: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: AppColor.textColor,
+                      ),
                     ),
                   ),
                 ),
