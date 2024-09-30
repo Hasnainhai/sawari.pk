@@ -27,7 +27,7 @@ class _HomeViewState extends State<HomeView> {
             children: [
               ListTile(
                 isThreeLine: false,
-                leading: const IconBox(bgImg: 'images/location.png'),
+                leading:  IconBox(bgImg: 'images/location.png'),
                 title: Text(
                   'Your Location',
                   style: GoogleFonts.getFont(

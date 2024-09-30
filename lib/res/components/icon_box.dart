@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:sawari_pk/res/components/colors.dart';
 
 class IconBox extends StatelessWidget {
-  const IconBox({
+  IconBox({
     super.key,
     this.bgImg,
     this.icon,
     this.color,
+    this.onTap,
   });
   final String? bgImg;
   final IconData? icon;
   final Color? color;
+  Function? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -21,15 +23,20 @@ class IconBox extends StatelessWidget {
         borderRadius: BorderRadius.circular(10.0),
         color: AppColor.primaryColor.withOpacity(0.1),
       ),
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: icon == null
-              ? Image.asset(bgImg!)
-              : Icon(
-                  icon,
-                  color: color,
-                ),
+      child: InkWell(
+        onTap: () {
+          onTap;
+        },
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: icon == null
+                ? Image.asset(bgImg!)
+                : Icon(
+                    icon,
+                    color: color,
+                  ),
+          ),
         ),
       ),
     );
