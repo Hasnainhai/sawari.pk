@@ -100,7 +100,7 @@ class BookingCard extends StatelessWidget {
                         style: GoogleFonts.getFont(
                           "Urbanist",
                           textStyle: const TextStyle(
-                            fontSize: 12,
+                            fontSize: 8,
                             fontWeight: FontWeight.bold,
                             color: AppColor.textColor,
                           ),
@@ -108,7 +108,7 @@ class BookingCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  for (int i = 0; i < 13; i++)
+                  for (int i = 0; i < 10; i++)
                     Container(
                       width: 3.0,
                       height: 1.0,
@@ -121,7 +121,7 @@ class BookingCard extends StatelessWidget {
                     style: GoogleFonts.getFont(
                       "Urbanist",
                       textStyle: const TextStyle(
-                        fontSize: 12,
+                        fontSize: 10,
                         fontWeight: FontWeight.bold,
                         color: AppColor.titleColor,
                       ),

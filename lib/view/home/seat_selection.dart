@@ -52,7 +52,7 @@ class SelectSeatView extends StatelessWidget {
           ),
           const VerticalSpeacing(40),
           Container(
-            height: MediaQuery.of(context).size.height / 1.954,
+            height: MediaQuery.of(context).size.height / 2.1,
             decoration: const BoxDecoration(
               color: AppColor.whiteColor,
               borderRadius: BorderRadius.only(

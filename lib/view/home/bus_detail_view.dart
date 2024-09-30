@@ -52,7 +52,7 @@ class BusDetailView extends StatelessWidget {
           ),
           const VerticalSpeacing(40),
           Container(
-            height: MediaQuery.of(context).size.height / 1.96,
+            height: MediaQuery.of(context).size.height / 2.1,
             decoration: const BoxDecoration(
               color: AppColor.whiteColor,
               borderRadius: BorderRadius.only(
@@ -63,6 +63,7 @@ class BusDetailView extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: SingleChildScrollView(
+
                 child: Column(
                   children: [
                     Center(
