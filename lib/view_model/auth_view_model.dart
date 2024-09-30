@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sawari_pk/view_model/user_view_model.dart';
-
 import '../model/user_model.dart';
 import '../repository/auth_repository.dart';
 import '../utils/routes/routes_name.dart';
@@ -36,20 +35,21 @@ class AuthViewModel with ChangeNotifier {
       userPrefrences.saveUser(
         UserModel(token: value['token'].toString()),
       );
+      print('Token saved: ${value['token']}');
       if (kDebugMode) {
         print('..............${value['token']}.................');
       }
       Utils.flushBarErrorMessage(
           '${value.toString()} ${value['token']}', context);
-      Navigator.pushNamedAndRemoveUntil(
-          context, RoutesName.dashboard, (route) => false);
-      Utils.toastMessage('SuccessFully LogIn Token: ${value.toString()},');
       if (kDebugMode) {
         print('................token: ${value.toString()}');
       }
       if (kDebugMode) {
         print(value.toString());
       }
+      Navigator.pushNamedAndRemoveUntil(
+          context, RoutesName.dashboard, (route) => false);
+      Utils.toastMessage('SuccessFully LogIn Token: ${value.toString()},');
     }).onError((error, stackTrace) {
       Utils.flushBarErrorMessage(error.toString(), context);
       setLoading(false);
