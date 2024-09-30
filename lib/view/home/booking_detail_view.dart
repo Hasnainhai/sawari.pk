@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sawari_pk/res/components/colors.dart';
@@ -196,170 +195,173 @@ class _BookingDetailViewState extends State<BookingDetailView> {
             ),
           ),
           const VerticalSpeacing(40),
-          Container(
-            height: 495,
-            width: MediaQuery.of(context).size.width,
-            decoration: const BoxDecoration(
-              color: Color(0xff05324D),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
+          Expanded(
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              decoration: const BoxDecoration(
+                color: Color(0xff05324D),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
               ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 20.0,
-                    right: 20,
-                    top: 20,
-                  ),
-                  child: Text(
-                    "Hyex",
-                    style: GoogleFonts.getFont(
-                      "Urbanist",
-                      textStyle: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: AppColor.whiteColor,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 20.0,
+                      right: 20,
+                      top: 20,
+                    ),
+                    child: Text(
+                      "Hyex",
+                      style: GoogleFonts.getFont(
+                        "Urbanist",
+                        textStyle: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: AppColor.whiteColor,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 20.0,
-                    right: 20,
-                  ),
-                  child: Text(
-                    "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-                    style: GoogleFonts.getFont(
-                      "Urbanist",
-                      textStyle: const TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: AppColor.whiteColor,
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 20.0,
+                      right: 20,
+                    ),
+                    child: Text(
+                      "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+                      style: GoogleFonts.getFont(
+                        "Urbanist",
+                        textStyle: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                          color: AppColor.whiteColor,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const Spacer(),
-                Container(
-                  height: 399,
-                  decoration: const BoxDecoration(
-                    color: AppColor.whiteColor,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
-                    ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Booking Details",
-                            style: GoogleFonts.getFont(
-                              "Urbanist",
-                              textStyle: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                color: AppColor.titleColor,
+                  const VerticalSpeacing(10),
+                  Expanded(
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        color: AppColor.whiteColor,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20),
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Booking Details",
+                                style: GoogleFonts.getFont(
+                                  "Urbanist",
+                                  textStyle: const TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700,
+                                    color: AppColor.titleColor,
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
-                          const VerticalSpeacing(10),
-                          Container(
-                            width: MediaQuery.of(context).size.width,
-                            decoration: BoxDecoration(
-                              color: Colors.transparent,
-                              border: Border.all(
-                                color: AppColor.titleColor,
-                                width: 1,
-                              ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: const Padding(
-                              padding: EdgeInsets.all(20.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                              const VerticalSpeacing(10),
+                              Container(
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                  color: Colors.transparent,
+                                  border: Border.all(
+                                    color: AppColor.titleColor,
+                                    width: 1,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(20.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                      Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          BookingDetailWidget(
-                                            detail: "Seat Number",
-                                            value: "A6",
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              BookingDetailWidget(
+                                                detail: "Seat Number",
+                                                value: "A6",
+                                              ),
+                                              BookingDetailWidget(
+                                                detail: "Date",
+                                                value: "9/12/2023",
+                                              ),
+                                              BookingDetailWidget(
+                                                detail: "Departure Time",
+                                                value: "12:30PM",
+                                              ),
+                                              BookingDetailWidget(
+                                                detail: "Fare",
+                                                value: "3000",
+                                              ),
+                                            ],
                                           ),
-                                          BookingDetailWidget(
-                                            detail: "Date",
-                                            value: "9/12/2023",
-                                          ),
-                                          BookingDetailWidget(
-                                            detail: "Departure Time",
-                                            value: "12:30PM",
-                                          ),
-                                          BookingDetailWidget(
-                                            detail: "Fare",
-                                            value: "3000",
-                                          ),
-                                        ],
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          BookingDetailWidget(
-                                            detail: "Year",
-                                            value: "2022",
-                                          ),
-                                          BookingDetailWidget(
-                                            detail: "Destination",
-                                            value: "Skardu",
-                                          ),
-                                          BookingDetailWidget(
-                                            detail: "Arrival Time",
-                                            value: "06:30PM",
-                                          ),
-                                          BookingDetailWidget(
-                                            detail: "Arrival",
-                                            value: "Gilgit",
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              BookingDetailWidget(
+                                                detail: "Year",
+                                                value: "2022",
+                                              ),
+                                              BookingDetailWidget(
+                                                detail: "Destination",
+                                                value: "Skardu",
+                                              ),
+                                              BookingDetailWidget(
+                                                detail: "Arrival Time",
+                                                value: "06:30PM",
+                                              ),
+                                              BookingDetailWidget(
+                                                detail: "Arrival",
+                                                value: "Gilgit",
+                                              ),
+                                            ],
                                           ),
                                         ],
                                       ),
                                     ],
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
+                              const VerticalSpeacing(40),
+                              RoundedButton(
+                                  title: "Book Now",
+                                  onpress: () {
+                                    setState(() {
+                                      _showPopup(context);
+                                    });
+                                  }),
+                              const VerticalSpeacing(20),
+                            ],
                           ),
-                          const VerticalSpeacing(40),
-                          RoundedButton(
-                              title: "Book Now",
-                              onpress: () {
-                                setState(() {
-                                  _showPopup(context);
-                                });
-                              }),
-                          const VerticalSpeacing(20),
-                        ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           )
         ],
