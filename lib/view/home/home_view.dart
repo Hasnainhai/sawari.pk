@@ -8,9 +8,7 @@ import '../../data/response/status.dart';
 import '../../res/components/colors.dart';
 import '../../res/components/icon_box.dart';
 import '../../res/components/profile_box.dart';
-import '../../utils/routes/routes_name.dart';
 import '../../view_model/home_view_view_modal.dart';
-import 'widgets/expanded_container.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -101,8 +99,8 @@ class _HomeViewState extends State<HomeView> {
                         ],
                       ),
                     ),
-                    const VerticalSpeacing(20.0),
-                    const ExpandableContainer(),
+                    // const VerticalSpeacing(20.0),
+                    // const ExpandableContainer(),
                     const VerticalSpeacing(30.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
