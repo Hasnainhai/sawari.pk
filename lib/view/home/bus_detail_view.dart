@@ -8,6 +8,7 @@ import 'package:sawari_pk/res/components/profile_box.dart';
 import 'package:sawari_pk/res/components/rounded_button.dart';
 import 'package:sawari_pk/res/components/vertical_speacing.dart';
 import 'package:sawari_pk/utils/routes/routes_name.dart';
+import 'package:sawari_pk/view/home/seat_selection.dart';
 import 'package:sawari_pk/view/home/widgets/deatils_container.dart';
 
 class BusDetailView extends StatelessWidget {
@@ -24,10 +25,6 @@ class BusDetailView extends StatelessWidget {
         DateFormat('hh:mm a').format(popularSchedule.departureTime);
     final formattedArrivalTime =
         DateFormat('hh:mm a').format(popularSchedule.arrivalTime);
-
-// If departureTime is a string, parse and then format it
-// final departureTime = DateTime.parse(popularSchedule.departureTime.toString());
-// final formattedTime = DateFormat('hh:mm a').format(departureTime);
     return Scaffold(
       backgroundColor: const Color(0xffEBEBEB),
       body: SafeArea(
@@ -139,10 +136,9 @@ class BusDetailView extends StatelessWidget {
                     RoundedButton(
                         title: "Check for Available Seats",
                         onpress: () {
-                          Navigator.pushNamed(
-                            context,
-                            RoutesName.seatSelection,
-                          );
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => SelectSeatView(
+                                  popularSchedule: popularSchedule)));
                         }),
                     const VerticalSpeacing(
                       40,

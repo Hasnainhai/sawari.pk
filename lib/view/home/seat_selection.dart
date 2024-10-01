@@ -8,8 +8,11 @@ import 'package:sawari_pk/res/components/vertical_speacing.dart';
 import 'package:sawari_pk/utils/routes/routes_name.dart';
 import 'package:sawari_pk/view/home/widgets/seat_container.dart';
 
+import '../../model/home_vehical_modal.dart';
+
 class SelectSeatView extends StatelessWidget {
-  const SelectSeatView({super.key});
+  const SelectSeatView({super.key, required this.popularSchedule});
+  final PopularSchedule popularSchedule;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +32,7 @@ class SelectSeatView extends StatelessWidget {
                   color: AppColor.primaryColor,
                 ),
                 Text(
-                  "Agency Name",
+                  popularSchedule.vehicle.agency.toString(),
                   style: GoogleFonts.getFont(
                     "Urbanist",
                     textStyle: const TextStyle(
