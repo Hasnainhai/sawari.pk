@@ -26,6 +26,7 @@ class _HomeViewState extends State<HomeView> {
     homeViewViewModel.fetchVehicalList();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -178,7 +179,8 @@ class _HomeViewState extends State<HomeView> {
                                                 MaterialPageRoute(
                                                     builder: (context) =>
                                                         BusDetailView(
-                                                         popularSchedule: popularSchedules,
+                                                          popularSchedule:
+                                                              popularSchedules,
                                                         )));
                                           },
                                         ),
@@ -269,7 +271,9 @@ class _HomeViewState extends State<HomeView> {
                                                 MaterialPageRoute(
                                                     builder: (context) =>
                                                         BusDetailView(
-                                                           popularSchedule: popularSchedules,)));
+                                                          popularSchedule:
+                                                              popularSchedules,
+                                                        )));
                                           },
                                         ),
                                       ),
