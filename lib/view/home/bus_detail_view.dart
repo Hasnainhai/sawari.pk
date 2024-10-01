@@ -11,7 +11,7 @@ import 'package:sawari_pk/utils/routes/routes_name.dart';
 import 'package:sawari_pk/view/home/widgets/deatils_container.dart';
 
 class BusDetailView extends StatelessWidget {
-  BusDetailView({super.key, required this.popularSchedule});
+  const BusDetailView({super.key, required this.popularSchedule});
 
   final PopularSchedule popularSchedule;
 
@@ -64,7 +64,7 @@ class BusDetailView extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 20.0, right: 20),
             child: SizedBox(
-              height: double.infinity,
+              height: 200,
               width: double.infinity,
               child: Image.network(popularSchedule.vehicle.image.toString(),
                   fit: BoxFit.cover),
