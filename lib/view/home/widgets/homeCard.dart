@@ -10,17 +10,18 @@ class HomeCard extends StatelessWidget {
   const HomeCard({
     super.key,
     required this.img,
+    required this.agencyName,
+    required this.departurePlace, required this.onTapDetail,
   });
-
+  final String agencyName;
+  final String departurePlace;
+final Function onTapDetail;
   final String img;
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Navigator.pushNamed(
-          context,
-          RoutesName.busDetail,
-        );
+      onTap: (){
+        onTapDetail();
       },
       child: Container(
         height: 169,
@@ -57,7 +58,7 @@ class HomeCard extends StatelessWidget {
               Text.rich(
                 textAlign: TextAlign.start,
                 TextSpan(
-                  text: 'Agency Name\n',
+                  text: '$agencyName\n',
                   style: GoogleFonts.getFont(
                     "Urbanist",
                     textStyle: const TextStyle(
@@ -68,7 +69,7 @@ class HomeCard extends StatelessWidget {
                   ),
                   children: [
                     TextSpan(
-                      text: 'Gilgit to Rawal Pindi',
+                      text: departurePlace,
                       style: GoogleFonts.getFont(
                         "Urbanist",
                         textStyle: const TextStyle(

@@ -7,6 +7,7 @@ import '../../data/response/status.dart';
 import '../../res/components/colors.dart';
 import '../../res/components/icon_box.dart';
 import '../../res/components/profile_box.dart';
+import '../../utils/routes/routes_name.dart';
 import '../../view_model/home_view_view_modal.dart';
 import 'widgets/expanded_container.dart';
 
@@ -155,13 +156,32 @@ class _HomeViewState extends State<HomeView> {
                                 itemCount: value
                                     .vehicalsList.data!.popularSchedules.length,
                                 itemBuilder: (context, index) {
-                                  return HomeCard(
-                                      img: value
-                                          .vehicalsList
-                                          .data!
-                                          .popularSchedules[index]
-                                          .vehicle
-                                          .image);
+                                  final popularSchedules = value.vehicalsList
+                                      .data!.popularSchedules[index];
+                                  return SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(right: 10),
+                                      child: SizedBox(
+                                        height: 169,
+                                        width: 146,
+                                        child: HomeCard(
+                                          img: popularSchedules.vehicle.image,
+                                          agencyName: popularSchedules
+                                              .vehicle.agency
+                                              .toString(),
+                                          departurePlace:
+                                              popularSchedules.departurePlace,
+                                          onTapDetail: () {
+                                            Navigator.pushNamed(
+                                              context,
+                                              RoutesName.busDetail,
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                  );
                                 });
                           default:
                         }
@@ -204,20 +224,58 @@ class _HomeViewState extends State<HomeView> {
               ),
               const VerticalSpeacing(16.0),
               // Choose Popular Agencies card
-              const Padding(
-                padding: EdgeInsets.only(left: 20.0),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0),
                 child: SizedBox(
                   height: 170,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        HomeCard(img: 'images/bus1.png'),
-                        SizedBox(width: 16.0),
-                        HomeCard(img: 'images/bus1.png'),
-                        SizedBox(width: 16.0),
-                        HomeCard(img: 'images/bus1.png'),
-                      ],
+                  child: ChangeNotifierProvider<HomeViewViewModel>(
+                    create: (BuildContext context) => homeViewViewModel,
+                    child: Consumer<HomeViewViewModel>(
+                      builder: (context, value, _) {
+                        switch (value.vehicalsList.status) {
+                          case Status.LOADING:
+                            return const Center(
+                                child: CircularProgressIndicator());
+                          case Status.ERROR:
+                            return Center(
+                                child: Text(
+                                    value.vehicalsList.message.toString()));
+                          case Status.COMPLETED:
+                            return ListView.builder(
+                                itemCount: value
+                                    .vehicalsList.data!.popularSchedules.length,
+                                itemBuilder: (context, index) {
+                                  final popularSchedules = value.vehicalsList
+                                      .data!.popularSchedules[index];
+                                  return SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(right: 10),
+                                      child: SizedBox(
+                                        height: 169,
+                                        width: 146,
+                                        child: HomeCard(
+                                          img: popularSchedules.vehicle.image,
+                                          agencyName: popularSchedules
+                                              .vehicle.agency
+                                              .toString(),
+                                          departurePlace:
+                                              popularSchedules.departurePlace,
+                                          onTapDetail: () {
+                                            Navigator.pushNamed(
+                                              context,
+                                              RoutesName.busDetail,
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                });
+                          default:
+                        }
+                        return Container();
+                      },
                     ),
                   ),
                 ),
