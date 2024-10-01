@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:sawari_pk/res/components/vertical_speacing.dart';
+import 'package:sawari_pk/view/home/bus_detail_view.dart';
 import 'package:sawari_pk/view/home/widgets/homeCard.dart';
 import '../../data/response/status.dart';
 import '../../res/components/colors.dart';
@@ -25,7 +26,6 @@ class _HomeViewState extends State<HomeView> {
     homeViewViewModel.fetchVehicalList();
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -158,6 +158,7 @@ class _HomeViewState extends State<HomeView> {
                                 itemBuilder: (context, index) {
                                   final popularSchedules = value.vehicalsList
                                       .data!.popularSchedules[index];
+
                                   return SingleChildScrollView(
                                     scrollDirection: Axis.horizontal,
                                     child: Padding(
@@ -173,10 +174,12 @@ class _HomeViewState extends State<HomeView> {
                                           departurePlace:
                                               popularSchedules.departurePlace,
                                           onTapDetail: () {
-                                            Navigator.pushNamed(
-                                              context,
-                                              RoutesName.busDetail,
-                                            );
+                                            Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        BusDetailView(
+                                                         popularSchedule: popularSchedules,
+                                                        )));
                                           },
                                         ),
                                       ),
@@ -262,10 +265,11 @@ class _HomeViewState extends State<HomeView> {
                                           departurePlace:
                                               popularSchedules.departurePlace,
                                           onTapDetail: () {
-                                            Navigator.pushNamed(
-                                              context,
-                                              RoutesName.busDetail,
-                                            );
+                                            Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        BusDetailView(
+                                                           popularSchedule: popularSchedules,)));
                                           },
                                         ),
                                       ),
