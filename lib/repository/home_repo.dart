@@ -7,7 +7,7 @@ import '../res/app_url.dart';
 class HomeRepository {
   final BaseApiServices _apiServices = NetworkApiService();
 
-  Future<HomeVehicalModal> fetchVehicalList() async {
+  Future<HomeVehicalModal> fetchVehicalLists() async {
     try {
       dynamic response =
           await _apiServices.getGetApiResponse(AppUrl.homeEndPoint);

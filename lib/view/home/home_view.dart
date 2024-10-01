@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:sawari_pk/res/components/vertical_speacing.dart';
 import 'package:sawari_pk/view/home/widgets/homeCard.dart';
+import '../../data/response/status.dart';
 import '../../res/components/colors.dart';
 import '../../res/components/icon_box.dart';
 import '../../res/components/profile_box.dart';
+import '../../view_model/home_view_view_modal.dart';
 import 'widgets/expanded_container.dart';
 
 class HomeView extends StatefulWidget {
@@ -15,6 +18,13 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  HomeViewViewModel homeViewViewModel = HomeViewViewModel();
+  @override
+  void initState() {
+    homeViewViewModel.fetchVehicalList();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +37,7 @@ class _HomeViewState extends State<HomeView> {
             children: [
               ListTile(
                 isThreeLine: false,
-                leading:  IconBox(bgImg: 'images/location.png'),
+                leading: IconBox(bgImg: 'images/location.png'),
                 title: Text(
                   'Your Location',
                   style: GoogleFonts.getFont(
@@ -124,20 +134,39 @@ class _HomeViewState extends State<HomeView> {
               ),
               const VerticalSpeacing(16.0),
               // Choose near you card
-              const Padding(
-                padding: EdgeInsets.only(left: 20.0),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0),
                 child: SizedBox(
                   height: 170,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        HomeCard(img: 'images/bus.png'),
-                        SizedBox(width: 16.0),
-                        HomeCard(img: 'images/bus.png'),
-                        SizedBox(width: 16.0),
-                        HomeCard(img: 'images/bus.png'),
-                      ],
+                  child: ChangeNotifierProvider<HomeViewViewModel>(
+                    create: (BuildContext context) => homeViewViewModel,
+                    child: Consumer<HomeViewViewModel>(
+                      builder: (context, value, _) {
+                        switch (value.vehicalsList.status) {
+                          case Status.LOADING:
+                            return const Center(
+                                child: CircularProgressIndicator());
+                          case Status.ERROR:
+                            return Center(
+                                child: Text(
+                                    value.vehicalsList.message.toString()));
+                          case Status.COMPLETED:
+                            return ListView.builder(
+                                itemCount: value
+                                    .vehicalsList.data!.popularSchedules.length,
+                                itemBuilder: (context, index) {
+                                  return HomeCard(
+                                      img: value
+                                          .vehicalsList
+                                          .data!
+                                          .popularSchedules[index]
+                                          .vehicle
+                                          .image);
+                                });
+                          default:
+                        }
+                        return Container();
+                      },
                     ),
                   ),
                 ),

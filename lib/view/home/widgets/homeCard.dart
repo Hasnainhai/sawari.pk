@@ -48,7 +48,7 @@ class HomeCard extends StatelessWidget {
                     topRight: Radius.circular(10.0),
                   ),
                   image: DecorationImage(
-                    image: AssetImage(img),
+                    image: NetworkImage(img),
                     fit: BoxFit.fill,
                   ),
                 ),
