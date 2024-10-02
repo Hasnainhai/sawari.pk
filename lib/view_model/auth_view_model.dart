@@ -33,9 +33,9 @@ class AuthViewModel with ChangeNotifier {
       setLoading(false);
       final userPrefrences = Provider.of<UserViewModel>(context, listen: false);
       userPrefrences.saveUser(
-        UserModel(token: value['token'].toString()),
+        UserModel(token: value.toString()),
       );
-      print('Token saved: ${value['token']}');
+      print('Token saved: ${value.toString()}');
       if (kDebugMode) {
         print('..............${value['token']}.................');
       }
