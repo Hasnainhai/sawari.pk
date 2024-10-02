@@ -7,7 +7,6 @@ import 'package:sawari_pk/res/components/icon_box.dart';
 import 'package:sawari_pk/res/components/profile_box.dart';
 import 'package:sawari_pk/res/components/rounded_button.dart';
 import 'package:sawari_pk/res/components/vertical_speacing.dart';
-import 'package:sawari_pk/utils/routes/routes_name.dart';
 import 'package:sawari_pk/view/home/seat_selection.dart';
 import 'package:sawari_pk/view/home/widgets/deatils_container.dart';
 

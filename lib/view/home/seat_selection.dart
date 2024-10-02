@@ -1,18 +1,85 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 import 'package:sawari_pk/res/components/colors.dart';
 import 'package:sawari_pk/res/components/icon_box.dart';
 import 'package:sawari_pk/res/components/profile_box.dart';
 import 'package:sawari_pk/res/components/rounded_button.dart';
 import 'package:sawari_pk/res/components/vertical_speacing.dart';
 import 'package:sawari_pk/utils/routes/routes_name.dart';
-import 'package:sawari_pk/view/home/widgets/seat_container.dart';
-
 import '../../model/home_vehical_modal.dart';
+import '../../utils/routes/utils.dart';
+import '../../view_model/user_view_model.dart';
 
-class SelectSeatView extends StatelessWidget {
+class SelectSeatView extends StatefulWidget {
   const SelectSeatView({super.key, required this.popularSchedule});
   final PopularSchedule popularSchedule;
+
+  @override
+  State<SelectSeatView> createState() => _SelectSeatViewState();
+}
+
+class _SelectSeatViewState extends State<SelectSeatView> {
+  bool _isLoading = false;
+  // Function to call the API
+  Future<void> checkoutSession(BuildContext context, String seatNumber) async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    // final userPreferences = Provider.of<UserViewModel>(context, listen: false);
+    // final userModel = await userPreferences.getUser();
+    // final token = userModel.token;
+
+    Map<String, dynamic> requestData = {
+      "fare_rates": widget.popularSchedule.vehicle.fareRates,
+      "seat_number": int.parse(seatNumber),
+      "schedule_id": widget.popularSchedule.id,
+    };
+
+    try {
+      final userPreference = Provider.of<UserViewModel>(context, listen: false);
+      userPreference.getUser().then((userModel) async {
+        final token = userModel.token;
+        print('User token: $token');
+        Map<String, String> headers = {
+          'accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-CSRFToken':
+              'SEN1qEu3q8W07ioVFDJ7FyEuvoxUQK8Wqv9KrxEyrSOEYdZGd1ZlgPS6Zw75ihlR',
+          'authorization': 'Token $token',
+        };
+
+        // Make the API request
+        http.Response apiResponse = await http.post(
+          Uri.parse('http://13.50.255.37:8000/api/v1/create-checkout-session/'),
+          headers: headers,
+          body: jsonEncode(requestData),
+        );
+
+        if (apiResponse.statusCode == 201) {
+          Utils.toastMessage('Checkout Successful');
+          debugPrint(
+              '.........Data : ${apiResponse.body}...........................');
+          // Handle success and navigate to the desired screen
+          Navigator.pushNamed(context, RoutesName.bookingDetailview);
+        } else {
+          Utils.toastMessage(
+              'Checkout failed. Status Code: ${apiResponse.statusCode}');
+        }
+      });
+      // Define headers including the CSRF token
+    } catch (e) {
+      Utils.toastMessage('Error during checkout: $e');
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +99,7 @@ class SelectSeatView extends StatelessWidget {
                   color: AppColor.primaryColor,
                 ),
                 Text(
-                  popularSchedule.vehicle.agency.toString(),
+                  widget.popularSchedule.vehicle.agency.toString(),
                   style: GoogleFonts.getFont(
                     "Urbanist",
                     textStyle: const TextStyle(
@@ -109,52 +176,108 @@ class SelectSeatView extends StatelessWidget {
                         ),
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: const Padding(
+                      child: Padding(
                         padding: EdgeInsets.all(20.0),
                         child: Column(
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                SeatContainer(
+                                GestureDetector(
+                                  onTap: () {
+                                    checkoutSession(
+                                        context, "02"); // Pass seat number here
+                                  },
+                                  child: const SeatContainer(
                                     selectColor: Colors.transparent,
-                                    seatno: "02"),
-                                SeatContainer(
+                                    seatno: "02",
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    checkoutSession(
+                                        context, "17"); // Pass seat number here
+                                  },
+                                  child: const SeatContainer(
                                     selectColor: Colors.transparent,
-                                    seatno: "17"),
+                                    seatno: "17",
+                                  ),
+                                ),
                               ],
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                SeatContainer(
+                                GestureDetector(
+                                  onTap: () {
+                                    checkoutSession(
+                                        context, "04"); // Pass seat number here
+                                  },
+                                  child: const SeatContainer(
                                     selectColor: Colors.transparent,
-                                    seatno: "04"),
-                                SeatContainer(
+                                    seatno: "04",
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    checkoutSession(
+                                        context, "14"); // Pass seat number here
+                                  },
+                                  child: const SeatContainer(
                                     selectColor: Colors.transparent,
-                                    seatno: "14"),
+                                    seatno: "14",
+                                  ),
+                                ),
                               ],
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                SeatContainer(
+                                GestureDetector(
+                                  onTap: () {
+                                    checkoutSession(
+                                        context, "06"); // Pass seat number here
+                                  },
+                                  child: const SeatContainer(
                                     selectColor: Colors.transparent,
-                                    seatno: "06"),
-                                SeatContainer(
+                                    seatno: "06",
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    checkoutSession(
+                                        context, "20"); // Pass seat number here
+                                  },
+                                  child: const SeatContainer(
                                     selectColor: Colors.transparent,
-                                    seatno: "20"),
+                                    seatno: "20",
+                                  ),
+                                ),
                               ],
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                SeatContainer(
+                                GestureDetector(
+                                  onTap: () {
+                                    checkoutSession(
+                                        context, "08"); // Pass seat number here
+                                  },
+                                  child: const SeatContainer(
                                     selectColor: Colors.transparent,
-                                    seatno: "08"),
-                                SeatContainer(
+                                    seatno: "08",
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    checkoutSession(
+                                        context, "13"); // Pass seat number here
+                                  },
+                                  child: const SeatContainer(
                                     selectColor: Colors.transparent,
-                                    seatno: "13"),
+                                    seatno: "13",
+                                  ),
+                                ),
                               ],
                             )
                           ],
@@ -166,11 +289,19 @@ class SelectSeatView extends StatelessWidget {
                     ),
                     RoundedButton(
                         title: "Book Now",
-                        onpress: () {
-                          Navigator.pushNamed(
-                            context,
-                            RoutesName.bookingDetailview,
-                          );
+                        onpress: () async {
+                          final userPreferences = Provider.of<UserViewModel>(
+                              context,
+                              listen: false);
+                          final userModel = await userPreferences.getUser();
+                          final token = userModel.token;
+                          print('Token: $token');
+                          await checkoutSession(context, '15');
+                          print('.............nooo............');
+                          // Navigator.pushNamed(
+                          //   context,
+                          //   RoutesName.bookingDetailview,
+                          // );
                         }),
                     const VerticalSpeacing(
                       40,
@@ -182,6 +313,87 @@ class SelectSeatView extends StatelessWidget {
           )
         ],
       )),
+    );
+  }
+}
+
+class SeatContainer extends StatefulWidget {
+  const SeatContainer(
+      {super.key, required this.selectColor, required this.seatno});
+  final Color selectColor;
+  final String seatno;
+
+  @override
+  State<SeatContainer> createState() => _SeatContainerState();
+}
+
+class _SeatContainerState extends State<SeatContainer> {
+  bool isselect = false;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Seat No.",
+              style: GoogleFonts.getFont(
+                "Urbanist",
+                textStyle: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: AppColor.textColor,
+                ),
+              ),
+            ),
+            Text(
+              widget.seatno,
+              style: GoogleFonts.getFont(
+                "Urbanist",
+                textStyle: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: AppColor.titleColor,
+                ),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(
+          width: 54,
+        ),
+        GestureDetector(
+          onTap: () {
+            setState(() {
+              isselect = !isselect;
+            });
+          },
+          child: Container(
+            height: 20,
+            width: 20,
+            decoration: BoxDecoration(
+                color: isselect == true
+                    ? AppColor.primaryColor
+                    : Colors.transparent,
+                border: Border.all(
+                    color: isselect == true
+                        ? Colors.transparent
+                        : AppColor.boxTxColor),
+                borderRadius: BorderRadius.circular(2)),
+            child: Center(
+              child: Icon(
+                Icons.done,
+                size: 14,
+                color: isselect == true
+                    ? AppColor.whiteColor
+                    : AppColor.boxTxColor,
+              ),
+            ),
+          ),
+        )
+      ],
     );
   }
 }
