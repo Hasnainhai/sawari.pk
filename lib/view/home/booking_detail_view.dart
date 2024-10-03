@@ -10,7 +10,7 @@ import 'package:sawari_pk/utils/routes/routes_name.dart';
 import 'package:sawari_pk/view/home/widgets/booking_detail_widget.dart';
 
 class BookingDetailView extends StatefulWidget {
-   BookingDetailView({super.key});
+  const BookingDetailView({super.key});
 
   @override
   State<BookingDetailView> createState() => _BookingDetailViewState();
