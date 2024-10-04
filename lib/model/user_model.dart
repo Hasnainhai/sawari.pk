@@ -15,10 +15,10 @@ class UserModel {
   final String token;
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-        token: json["token"],
+        token: json["key"],
       );
 
   Map<String, dynamic> toJson() => {
-        "token": token,
+        "key": token,
       };
 }
