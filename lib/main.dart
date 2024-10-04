@@ -8,9 +8,6 @@ import 'package:sawari_pk/view_model/home_view_view_modal.dart';
 import 'package:sawari_pk/view_model/user_view_model.dart';
 
 void main() {
-  Stripe.publishableKey =
-      "cs_test_a19UDdbqNBkOdc92k730eGrVoDa6mgdJUN6NO64Qlr58yqikjS9s2UkCcK";
-  Stripe.instance.applySettings();
   runApp(const MyApp());
 }
 
