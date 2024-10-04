@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
@@ -10,12 +11,17 @@ import 'package:sawari_pk/res/components/rounded_button.dart';
 import 'package:sawari_pk/res/components/vertical_speacing.dart';
 import 'package:sawari_pk/utils/routes/routes_name.dart';
 import 'package:sawari_pk/view/home/widgets/booking_detail_widget.dart';
+import 'package:uni_links/uni_links.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../utils/routes/utils.dart';
+import 'package:http/http.dart' as http;
 
 class BookingDetailView extends StatefulWidget {
-  const BookingDetailView({super.key, required this.id, required this.userId});
+  const BookingDetailView(
+      {super.key, required this.id, required this.userId, required this.url});
   final String id;
   final int userId;
+  final String url;
 
   @override
   State<BookingDetailView> createState() => _BookingDetailViewState();
@@ -158,41 +164,51 @@ class _BookingDetailViewState extends State<BookingDetailView> {
     setState(() {
       _isLoading = true;
     });
+
     try {
-      // final response = await http.post(
-      //     Uri.parse(
-      //         "https://us-central1-nanny-fairy.cloudfunctions.net/stripePaymentIntentRequest"),
-      //     body: {
-      //       'email': 'email',
-      //       'amount': '200',
-      //       'address': 'address',
-      //       'postal_code': 'postalCode',
-      //       'city': 'city',
-      //       'state': 'state',
-      //       'name': 'name',
-      //     });
-      // final jsonResponse = jsonDecode(
-      //   response.body,
-      // );
-      await Stripe.instance.initPaymentSheet(
-          paymentSheetParameters: SetupPaymentSheetParameters(
-        paymentIntentClientSecret: widget.id,
-        merchantDisplayName: 'Buying services',
-        customerId: widget.userId.toString(),
-        // customerEphemeralKeySecret: widget.id,
-      ));
-      await Stripe.instance.presentPaymentSheet();
-      _showPopup(context);
+      // Fetch the payment URL from your server or provide the hardcoded Stripe URL
+      final response = await http.post(
+        Uri.parse(widget.url),
+        body: {
+          'amount':
+              '2000',
+          'currency': 'usd',
+        },
+      );
+
+      final jsonResponse = jsonDecode(response.body);
+      String paymentUrl = jsonResponse[
+          'payment_url']; // Use the payment URL returned by the server
+
+      // OR if you already have the payment URL (like the one provided):
+      // String paymentUrl = 'https://checkout.stripe.com/c/pay/cs_test_a1nYmsi6wvU1EuBNqf5K9Bi2oVuqv06Xc3s2H1QdWDHU3wPZEnruURc4nh';
+
+      // Launch the payment URL in the default browser
+      if (await canLaunch(paymentUrl)) {
+        await launch(paymentUrl);
+
+        // Listen for app deep link to know when the payment is done
+        linkStream.listen((String? link) {
+          // Check if the returned link indicates a successful payment
+          if (link != null && link.contains('success')) {
+            // Payment succeeded
+            _showPopup(
+              context,
+            );
+          } else if (link != null && link.contains('cancel')) {
+            // Payment canceled
+            Utils.flushBarErrorMessage("Payment Cancelled", context);
+          }
+        });
+      } else {
+        throw 'Could not launch $paymentUrl';
+      }
     } catch (e) {
-      print('Error in : ${e}');
       if (e is StripeException) {
         Utils.flushBarErrorMessage("Payment Cancelled", context);
-        print('Error in : ${e}');
       } else {
         Utils.flushBarErrorMessage("Problem in Payment", context);
       }
-      // await savePaymentInfo(
-      //     'Stripe', false); // Save payment failure in Firebase
     } finally {
       setState(() {
         _isLoading = false;
@@ -403,12 +419,18 @@ class _BookingDetailViewState extends State<BookingDetailView> {
                                 ),
                                 const VerticalSpeacing(40),
                                 RoundedButton(
-                                    title: "Book Now",
-                                    onpress: () {
-                                      setState(() {
-                                        initStripePayment();
-                                      });
-                                    }),
+                                  title: "Book Now",
+                                  onpress: () async {
+                                    // Check if the URL can be launched
+                                    if (await canLaunch(widget.url)) {
+                                      // Launch the URL in the browser
+                                      await launch(widget.url);
+                                    } else {
+                                      // Handle the error if the URL cannot be launched
+                                      throw 'Could not launch ${widget.url}';
+                                    }
+                                  },
+                                ),
                                 const VerticalSpeacing(20),
                               ],
                             ),

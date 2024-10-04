@@ -71,16 +71,19 @@ class _SelectSeatViewState extends State<SelectSeatView> {
           final responseData = jsonDecode(apiResponse.body);
           final String id = responseData['id'];
           final int userId = responseData['user_id'];
+          final String url = responseData['url'];
+          print('Id: $id  : url: $url');
           // Handle success and navigate to the desired screen
           Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
                 builder: (context) => BookingDetailView(
                       id: id,
-                      userId: userId,
+                      userId: userId, url: url,
                     )),
             (Route<dynamic> route) => false,
           );
+
         } else {
           Utils.toastMessage(
               'Checkout failed. Status Code: ${apiResponse.statusCode}');
@@ -327,7 +330,7 @@ class _SelectSeatViewState extends State<SelectSeatView> {
                                 .replaceAll('}', '');
 
                             print('Extracted Token: $extractedToken');
-                            await checkoutSession(context, '15');
+                            await checkoutSession(context, '17');
                             // Navigator.pushNamed(
                             //   context,
                             //   RoutesName.bookingDetailview,
