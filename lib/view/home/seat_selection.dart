@@ -119,7 +119,12 @@ class _SelectSeatViewState extends State<SelectSeatView> {
           const VerticalSpeacing(20),
           Padding(
             padding: const EdgeInsets.only(left: 20.0, right: 20),
-            child: Image.asset("images/busdetail.png"),
+            child: SizedBox(
+              height: 200,
+              width: double.infinity,
+              child: Image.network(widget.popularSchedule.vehicle.image.toString(),
+                  fit: BoxFit.cover),
+            ),
           ),
           const VerticalSpeacing(40),
           Container(
@@ -300,7 +305,6 @@ class _SelectSeatViewState extends State<SelectSeatView> {
 
                           print('Extracted Token: $extractedToken');
                           await checkoutSession(context, '15');
-                          print('.............nooo............');
                           // Navigator.pushNamed(
                           //   context,
                           //   RoutesName.bookingDetailview,
