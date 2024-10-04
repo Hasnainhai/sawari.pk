@@ -44,13 +44,14 @@ class _SelectSeatViewState extends State<SelectSeatView> {
       final userPreference = Provider.of<UserViewModel>(context, listen: false);
       userPreference.getUser().then((userModel) async {
         final token = userModel.token;
+        final extractedToken = token.replaceAll('{key: ', '').replaceAll('}', '');
         print('User token: $token');
         Map<String, String> headers = {
           'accept': 'application/json',
           'Content-Type': 'application/json',
           'X-CSRFToken':
               'SEN1qEu3q8W07ioVFDJ7FyEuvoxUQK8Wqv9KrxEyrSOEYdZGd1ZlgPS6Zw75ihlR',
-          'authorization': 'Token $token',
+          'authorization': 'Token $extractedToken',
         };
 
         // Make the API request
@@ -295,7 +296,9 @@ class _SelectSeatViewState extends State<SelectSeatView> {
                               listen: false);
                           final userModel = await userPreferences.getUser();
                           final token = userModel.token;
-                          print('Token: $token');
+                          final extractedToken = token.replaceAll('{key: ', '').replaceAll('}', '');
+
+                          print('Extracted Token: $extractedToken');
                           await checkoutSession(context, '15');
                           print('.............nooo............');
                           // Navigator.pushNamed(
@@ -303,9 +306,7 @@ class _SelectSeatViewState extends State<SelectSeatView> {
                           //   RoutesName.bookingDetailview,
                           // );
                         }),
-                    const VerticalSpeacing(
-                      40,
-                    ),
+                    const VerticalSpeacing(40),
                   ],
                 ),
               ),
@@ -328,7 +329,7 @@ class SeatContainer extends StatefulWidget {
 }
 
 class _SeatContainerState extends State<SeatContainer> {
-  bool isselect = false;
+  bool isSelect = false;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -367,18 +368,18 @@ class _SeatContainerState extends State<SeatContainer> {
         GestureDetector(
           onTap: () {
             setState(() {
-              isselect = !isselect;
+              isSelect = !isSelect;
             });
           },
           child: Container(
             height: 20,
             width: 20,
             decoration: BoxDecoration(
-                color: isselect == true
+                color: isSelect == true
                     ? AppColor.primaryColor
                     : Colors.transparent,
                 border: Border.all(
-                    color: isselect == true
+                    color: isSelect == true
                         ? Colors.transparent
                         : AppColor.boxTxColor),
                 borderRadius: BorderRadius.circular(2)),
@@ -386,7 +387,7 @@ class _SeatContainerState extends State<SeatContainer> {
               child: Icon(
                 Icons.done,
                 size: 14,
-                color: isselect == true
+                color: isSelect == true
                     ? AppColor.whiteColor
                     : AppColor.boxTxColor,
               ),

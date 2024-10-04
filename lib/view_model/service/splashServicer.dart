@@ -9,12 +9,14 @@ class SplashServices {
 
   void checkAuthenTication(BuildContext context) {
     getUserData().then((value) {
-      if (value.token.isEmpty || value.token == '') {
+      final extractedToken = value.token.replaceAll('{key: ', '').replaceAll('}', '');
+      if (extractedToken.isEmpty || extractedToken == '') {
         Future.delayed(const Duration(seconds: 3));
-        Navigator.pushNamed(context, RoutesName.login);
+        Navigator.pushNamed(context, RoutesName.onBoarding2);
       } else {
+        print(extractedToken);
         Future.delayed(const Duration(seconds: 5));
-        Navigator.pushNamed(context, RoutesName.login);
+        Navigator.pushNamed(context, RoutesName.dashboard);
       }
     }).onError((error, stackTrace) {
       if (kDebugMode) {

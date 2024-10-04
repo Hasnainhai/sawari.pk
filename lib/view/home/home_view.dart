@@ -8,7 +8,9 @@ import '../../data/response/status.dart';
 import '../../res/components/colors.dart';
 import '../../res/components/icon_box.dart';
 import '../../res/components/profile_box.dart';
+import '../../utils/routes/routes_name.dart';
 import '../../view_model/home_view_view_modal.dart';
+import '../../view_model/user_view_model.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -27,6 +29,7 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    final userPrefrences = Provider.of<UserViewModel>(context, listen: false);
     return Scaffold(
       backgroundColor: const Color(0xffF8FAFC),
       body: SafeArea(
@@ -60,9 +63,16 @@ class _HomeViewState extends State<HomeView> {
                     ),
                   ),
                 ),
-                trailing: const ProfileBox(
-                  bgImg:
-                      'https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671142.jpg?size=338&ext=jpg&ga=GA1.1.553209589.1714521600&semt=ais',
+                trailing: InkWell(
+                  onTap: () {
+                    userPrefrences.removerUser().then((value) {
+                      Navigator.pushNamed(context, RoutesName.login);
+                    });
+                  },
+                  child: ProfileBox(
+                    bgImg:
+                        'https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671142.jpg?size=338&ext=jpg&ga=GA1.1.553209589.1714521600&semt=ais',
+                  ),
                 ),
               ),
               const VerticalSpeacing(20.0),
