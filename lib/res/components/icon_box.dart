@@ -25,7 +25,7 @@ class IconBox extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () {
-          onTap;
+          Navigator.pop(context);
         },
         child: Center(
           child: Padding(
