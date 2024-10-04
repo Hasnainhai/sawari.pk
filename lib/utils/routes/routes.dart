@@ -58,9 +58,9 @@ class Routes {
       // case RoutesName.seatSelection:
       //   return MaterialPageRoute(
       //       builder: (BuildContext context) => const SelectSeatView());
-      case RoutesName.bookingDetailview:
-        return MaterialPageRoute(
-            builder: (BuildContext context) => BookingDetailView());
+      // case RoutesName.bookingDetailview:
+      //   return MaterialPageRoute(
+      //       builder: (BuildContext context) => BookingDetailView());
       case RoutesName.referral:
         return MaterialPageRoute(
             builder: (BuildContext context) => const ReferralView());
