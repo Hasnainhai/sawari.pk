@@ -170,8 +170,7 @@ class _BookingDetailViewState extends State<BookingDetailView> {
       final response = await http.post(
         Uri.parse(widget.url),
         body: {
-          'amount':
-              '2000',
+          'amount': '2000',
           'currency': 'usd',
         },
       );
@@ -421,12 +420,9 @@ class _BookingDetailViewState extends State<BookingDetailView> {
                                 RoundedButton(
                                   title: "Book Now",
                                   onpress: () async {
-                                    // Check if the URL can be launched
                                     if (await canLaunch(widget.url)) {
-                                      // Launch the URL in the browser
                                       await launch(widget.url);
                                     } else {
-                                      // Handle the error if the URL cannot be launched
                                       throw 'Could not launch ${widget.url}';
                                     }
                                   },

@@ -12,6 +12,7 @@ import 'package:sawari_pk/res/components/rounded_button.dart';
 import 'package:sawari_pk/res/components/vertical_speacing.dart';
 import 'package:sawari_pk/utils/routes/routes_name.dart';
 import 'package:sawari_pk/view/home/booking_detail_view.dart';
+import 'package:sawari_pk/view/home/widgets/seat_container.dart';
 import '../../model/home_vehical_modal.dart';
 import '../../utils/routes/utils.dart';
 import '../../view_model/user_view_model.dart';
@@ -31,18 +32,15 @@ class _SelectSeatViewState extends State<SelectSeatView> {
     setState(() {
       _isLoading = true;
     });
-
-    // final userPreferences = Provider.of<UserViewModel>(context, listen: false);
-    // final userModel = await userPreferences.getUser();
-    // final token = userModel.token;
-
     Map<String, dynamic> requestData = {
       "fare_rates": widget.popularSchedule.vehicle.fareRates,
       "seat_number": int.parse(seatNumber),
       "schedule_id": widget.popularSchedule.id,
     };
-
     try {
+      setState(() {
+        _isLoading = true;
+      });
       final userPreference = Provider.of<UserViewModel>(context, listen: false);
       userPreference.getUser().then((userModel) async {
         final token = userModel.token;
@@ -65,6 +63,9 @@ class _SelectSeatViewState extends State<SelectSeatView> {
         );
 
         if (apiResponse.statusCode == 201) {
+          setState(() {
+            _isLoading = false;
+          });
           Utils.toastMessage('Checkout Successful');
           debugPrint(
               '.........Data : ${apiResponse.body}...........................');
@@ -79,17 +80,17 @@ class _SelectSeatViewState extends State<SelectSeatView> {
             MaterialPageRoute(
                 builder: (context) => BookingDetailView(
                       id: id,
-                      userId: userId, url: url,
+                      userId: userId,
+                      url: url,
                     )),
             (Route<dynamic> route) => false,
           );
-
         } else {
           Utils.toastMessage(
-              'Checkout failed. Status Code: ${apiResponse.statusCode}');
+            'Checkout failed. Status Code: ${apiResponse.statusCode}',
+          );
         }
       });
-      // Define headers including the CSRF token
     } catch (e) {
       Utils.toastMessage('Error during checkout: $e');
     } finally {
@@ -328,13 +329,8 @@ class _SelectSeatViewState extends State<SelectSeatView> {
                             final extractedToken = token
                                 .replaceAll('{key: ', '')
                                 .replaceAll('}', '');
-
                             print('Extracted Token: $extractedToken');
                             await checkoutSession(context, '17');
-                            // Navigator.pushNamed(
-                            //   context,
-                            //   RoutesName.bookingDetailview,
-                            // );
                           }),
                       const VerticalSpeacing(40),
                     ],
@@ -345,87 +341,6 @@ class _SelectSeatViewState extends State<SelectSeatView> {
           ],
         )),
       ),
-    );
-  }
-}
-
-class SeatContainer extends StatefulWidget {
-  const SeatContainer(
-      {super.key, required this.selectColor, required this.seatno});
-  final Color selectColor;
-  final String seatno;
-
-  @override
-  State<SeatContainer> createState() => _SeatContainerState();
-}
-
-class _SeatContainerState extends State<SeatContainer> {
-  bool isSelect = false;
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Seat No.",
-              style: GoogleFonts.getFont(
-                "Urbanist",
-                textStyle: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  color: AppColor.textColor,
-                ),
-              ),
-            ),
-            Text(
-              widget.seatno,
-              style: GoogleFonts.getFont(
-                "Urbanist",
-                textStyle: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  color: AppColor.titleColor,
-                ),
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(
-          width: 54,
-        ),
-        GestureDetector(
-          onTap: () {
-            setState(() {
-              isSelect = !isSelect;
-            });
-          },
-          child: Container(
-            height: 20,
-            width: 20,
-            decoration: BoxDecoration(
-                color: isSelect == true
-                    ? AppColor.primaryColor
-                    : Colors.transparent,
-                border: Border.all(
-                    color: isSelect == true
-                        ? Colors.transparent
-                        : AppColor.boxTxColor),
-                borderRadius: BorderRadius.circular(2)),
-            child: Center(
-              child: Icon(
-                Icons.done,
-                size: 14,
-                color: isSelect == true
-                    ? AppColor.whiteColor
-                    : AppColor.boxTxColor,
-              ),
-            ),
-          ),
-        )
-      ],
     );
   }
 }
