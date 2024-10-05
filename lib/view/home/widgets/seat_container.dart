@@ -2,18 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../res/components/colors.dart';
 
-class SeatContainer extends StatefulWidget {
-  const SeatContainer(
-      {super.key, required this.selectColor, required this.seatno});
+class SeatContainer extends StatelessWidget {
   final Color selectColor;
   final String seatno;
+  final Function(String) onSeatSelected;
+  final bool isSelected;
 
-  @override
-  State<SeatContainer> createState() => _SeatContainerState();
-}
+  const SeatContainer({
+    Key? key,
+    required this.selectColor,
+    required this.seatno,
+    required this.onSeatSelected,
+    required this.isSelected,
+  }) : super(key: key);
 
-class _SeatContainerState extends State<SeatContainer> {
-  bool isSelect = false;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -34,7 +36,7 @@ class _SeatContainerState extends State<SeatContainer> {
               ),
             ),
             Text(
-              widget.seatno,
+              seatno,
               style: GoogleFonts.getFont(
                 "Urbanist",
                 textStyle: const TextStyle(
@@ -46,39 +48,35 @@ class _SeatContainerState extends State<SeatContainer> {
             ),
           ],
         ),
-        const SizedBox(
-          width: 54,
-        ),
+        const SizedBox(width: 54),
         GestureDetector(
           onTap: () {
-            setState(() {
-              isSelect = !isSelect;
-            });
+            onSeatSelected(seatno);
           },
           child: Container(
             height: 20,
             width: 20,
             decoration: BoxDecoration(
-                color: isSelect == true
-                    ? AppColor.primaryColor
-                    : Colors.transparent,
-                border: Border.all(
-                    color: isSelect == true
-                        ? Colors.transparent
-                        : AppColor.boxTxColor),
-                borderRadius: BorderRadius.circular(2)),
+              color: isSelected ? AppColor.primaryColor : Colors.transparent,
+              border: Border.all(
+                  color: isSelected
+                      ? Colors.transparent
+                      : AppColor.boxTxColor),
+              borderRadius: BorderRadius.circular(2),
+            ),
             child: Center(
               child: Icon(
                 Icons.done,
                 size: 14,
-                color: isSelect == true
+                color: isSelected
                     ? AppColor.whiteColor
                     : AppColor.boxTxColor,
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }
 }
+
