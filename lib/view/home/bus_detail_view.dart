@@ -10,20 +10,28 @@ import 'package:sawari_pk/res/components/vertical_speacing.dart';
 import 'package:sawari_pk/view/home/seat_selection.dart';
 import 'package:sawari_pk/view/home/widgets/deatils_container.dart';
 
-class BusDetailView extends StatelessWidget {
+class BusDetailView extends StatefulWidget {
   const BusDetailView({super.key, required this.popularSchedule});
 
   final PopularSchedule popularSchedule;
 
   @override
+  State<BusDetailView> createState() => _BusDetailViewState();
+}
+
+class _BusDetailViewState extends State<BusDetailView> {
+
+
+
+  @override
   Widget build(BuildContext context) {
     final scheduleDate = DateTime.parse(
-        popularSchedule.scheduleDate.toString()); // If it's a string
+        widget.popularSchedule.scheduleDate.toString()); // If it's a string
     final formattedDate = DateFormat('dd/MM/yyyy').format(scheduleDate);
     final formattedDepartureTime =
-        DateFormat('hh:mm a').format(popularSchedule.departureTime);
+        DateFormat('hh:mm a').format(widget.popularSchedule.departureTime);
     final formattedArrivalTime =
-        DateFormat('hh:mm a').format(popularSchedule.arrivalTime);
+        DateFormat('hh:mm a').format(widget.popularSchedule.arrivalTime);
     return Scaffold(
       backgroundColor: const Color(0xffEBEBEB),
       body: SafeArea(
@@ -40,7 +48,7 @@ class BusDetailView extends StatelessWidget {
                   color: AppColor.primaryColor,
                 ),
                 Text(
-                  popularSchedule.vehicle.agency.toString(),
+                  widget.popularSchedule.vehicle.agency.toString(),
                   style: GoogleFonts.getFont(
                     "Urbanist",
                     textStyle: const TextStyle(
@@ -62,7 +70,7 @@ class BusDetailView extends StatelessWidget {
             child: SizedBox(
               height: 200,
               width: double.infinity,
-              child: Image.network(popularSchedule.vehicle.image.toString(),
+              child: Image.network(widget.popularSchedule.vehicle.image.toString(),
                   fit: BoxFit.cover),
             ),
           ),
@@ -106,14 +114,14 @@ class BusDetailView extends StatelessWidget {
                     ),
                     DetailContainer(
                       name: 'Departure Destination',
-                      value: popularSchedule.departurePlace,
+                      value: widget.popularSchedule.departurePlace,
                     ),
                     const VerticalSpeacing(
                       20,
                     ),
                     DetailContainer(
                       name: 'Arrival Destination',
-                      value: popularSchedule.destination,
+                      value: widget.popularSchedule.destination,
                     ),
                     const VerticalSpeacing(
                       20,
@@ -137,7 +145,7 @@ class BusDetailView extends StatelessWidget {
                         onpress: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => SelectSeatView(
-                                  popularSchedule: popularSchedule)));
+                                  popularSchedule: widget.popularSchedule)));
                         }),
                     const VerticalSpeacing(
                       40,

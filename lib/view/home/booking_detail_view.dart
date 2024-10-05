@@ -10,6 +10,7 @@ import 'package:sawari_pk/res/components/profile_box.dart';
 import 'package:sawari_pk/res/components/rounded_button.dart';
 import 'package:sawari_pk/res/components/vertical_speacing.dart';
 import 'package:sawari_pk/utils/routes/routes_name.dart';
+import 'package:sawari_pk/view/home/dashboard/bottom_bar.dart';
 import 'package:sawari_pk/view/home/widgets/booking_detail_widget.dart';
 import 'package:uni_links/uni_links.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -422,7 +423,16 @@ class _BookingDetailViewState extends State<BookingDetailView> {
                                   onpress: () async {
                                     if (await canLaunch(widget.url)) {
                                       await launch(widget.url);
+                                      Navigator.pushAndRemoveUntil(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const DashBoardView()),
+                                          (route) => false);
                                     } else {
+                                      Utils.flushBarErrorMessage(
+                                          'Could not launch ${widget.url}',
+                                          context);
                                       throw 'Could not launch ${widget.url}';
                                     }
                                   },
