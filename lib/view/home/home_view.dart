@@ -69,7 +69,7 @@ class _HomeViewState extends State<HomeView> {
                       Navigator.pushNamed(context, RoutesName.login);
                     });
                   },
-                  child: ProfileBox(
+                  child: const ProfileBox(
                     bgImg:
                         'https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671142.jpg?size=338&ext=jpg&ga=GA1.1.553209589.1714521600&semt=ais',
                   ),
@@ -157,53 +157,54 @@ class _HomeViewState extends State<HomeView> {
                             return const Center(
                                 child: CircularProgressIndicator());
                           case Status.ERROR:
-                            return Center(
-                                child: Text(
-                                    value.vehicalsList.message.toString()));
+                            return const Center(
+                                child: Text('Communication problem'));
                           case Status.COMPLETED:
                             return ListView.builder(
-                                itemCount: value
-                                    .vehicalsList.data!.popularSchedules.length,
-                                itemBuilder: (context, index) {
-                                  final popularSchedules = value.vehicalsList
-                                      .data!.popularSchedules[index];
+                              scrollDirection: Axis.horizontal,
+                              itemCount: value
+                                  .vehicalsList.data!.popularSchedules.length,
+                              itemBuilder: (context, index) {
+                                final popularSchedules = value
+                                    .vehicalsList.data!.popularSchedules[index];
 
-                                  return SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(right: 10),
-                                      child: SizedBox(
-                                        height: 169,
-                                        width: 146,
-                                        child: HomeCard(
-                                          img: popularSchedules.vehicle.image,
-                                          agencyName: popularSchedules
-                                              .vehicle.agency
-                                              .toString(),
-                                          departurePlace:
-                                              popularSchedules.departurePlace,
-                                          onTapDetail: () {
-                                            Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        BusDetailView(
-                                                          popularSchedule:
-                                                              popularSchedules,
-                                                        )));
-                                          },
-                                        ),
-                                      ),
+                                return Padding(
+                                  padding: const EdgeInsets.only(
+                                      right:
+                                          10), // Horizontal spacing between cards
+                                  child: SizedBox(
+                                    height: 169,
+                                    width: 146,
+                                    child: HomeCard(
+                                      img: popularSchedules.vehicle.image,
+                                      agencyName: popularSchedules
+                                          .vehicle.agency
+                                          .toString(),
+                                      departurePlace:
+                                          popularSchedules.departurePlace,
+                                      onTapDetail: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) => BusDetailView(
+                                              popularSchedule: popularSchedules,
+                                            ),
+                                          ),
+                                        );
+                                      },
                                     ),
-                                  );
-                                });
+                                  ),
+                                );
+                              },
+                            );
                           default:
+                            return Container(); // Fallback container in case no status matches
                         }
-                        return Container();
                       },
                     ),
                   ),
                 ),
               ),
+
               const VerticalSpeacing(30.0),
               Padding(
                 padding: const EdgeInsets.only(left: 16.0, right: 16.0),
@@ -250,47 +251,48 @@ class _HomeViewState extends State<HomeView> {
                             return const Center(
                                 child: CircularProgressIndicator());
                           case Status.ERROR:
-                            return Center(
-                                child: Text(
-                                    value.vehicalsList.message.toString()));
+                            return const Center(
+                                child: Text('Communication problem'));
                           case Status.COMPLETED:
                             return ListView.builder(
-                                itemCount: value
-                                    .vehicalsList.data!.popularSchedules.length,
-                                itemBuilder: (context, index) {
-                                  final popularSchedules = value.vehicalsList
-                                      .data!.popularSchedules[index];
-                                  return SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(right: 10),
-                                      child: SizedBox(
-                                        height: 169,
-                                        width: 146,
-                                        child: HomeCard(
-                                          img: popularSchedules.vehicle.image,
-                                          agencyName: popularSchedules
-                                              .vehicle.agency
-                                              .toString(),
-                                          departurePlace:
-                                              popularSchedules.departurePlace,
-                                          onTapDetail: () {
-                                            Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        BusDetailView(
-                                                          popularSchedule:
-                                                              popularSchedules,
-                                                        )));
-                                          },
-                                        ),
-                                      ),
+                              scrollDirection: Axis.horizontal,
+                              itemCount: value
+                                  .vehicalsList.data!.popularSchedules.length,
+                              itemBuilder: (context, index) {
+                                final popularSchedules = value
+                                    .vehicalsList.data!.popularSchedules[index];
+
+                                return Padding(
+                                  padding: const EdgeInsets.only(
+                                      right:
+                                          10), // Horizontal spacing between cards
+                                  child: SizedBox(
+                                    height: 169,
+                                    width: 146,
+                                    child: HomeCard(
+                                      img: popularSchedules.vehicle.image,
+                                      agencyName: popularSchedules
+                                          .vehicle.agency
+                                          .toString(),
+                                      departurePlace:
+                                          popularSchedules.departurePlace,
+                                      onTapDetail: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) => BusDetailView(
+                                              popularSchedule: popularSchedules,
+                                            ),
+                                          ),
+                                        );
+                                      },
                                     ),
-                                  );
-                                });
+                                  ),
+                                );
+                              },
+                            );
                           default:
+                            return Container(); // Fallback container in case no status matches
                         }
-                        return Container();
                       },
                     ),
                   ),

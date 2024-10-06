@@ -270,7 +270,8 @@ class _SelectSeatViewState extends State<SelectSeatView> {
                               onpress: () async {
                                 if (_selectedSeatNumber == null) {
                                   // Show an alert if no seat is selected
-                                  ScaffoldMessenger.of(context).showSnackBar(
+                                   ScaffoldMessenger.of(context)
+                                      .showSnackBar(
                                     const SnackBar(
                                         content: Text(
                                             "Please select a seat before proceeding")),

@@ -16,10 +16,28 @@ class BookingView extends StatefulWidget {
 class _BookingViewState extends State<BookingView>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  // BookingDetailModel? bookingDetail;
+  // bool _isLoading = false;
+  //
+  // fetchDetails() async {
+  //   final userPreference = Provider.of<UserViewModel>(context, listen: false);
+  //   userPreference.getUser().then((userModel) async {
+  //     final token = userModel.token;
+  //     final extractedToken = token.replaceAll('{key: ', '').replaceAll('}', '');
+  //     BookingDetailModel? details = await fetchBookingDetails(extractedToken);
+  //     setState(() {
+  //       bookingDetail = details;
+  //       _isLoading = false;
+  //     });
+  //   });
+  // }
 
   @override
   void initState() {
     super.initState();
+
+    // fetchDetails();
+
     //tapController in the number of tabs
     _tabController = TabController(length: 3, vsync: this);
   }
