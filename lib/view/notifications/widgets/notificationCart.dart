@@ -46,42 +46,44 @@ class NotificationCard extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 10.0),
-            Text.rich(
-              textAlign: TextAlign.start,
-              TextSpan(
-                text: 'Congratulation! your seat has been Booked in\n',
-                style: GoogleFonts.getFont(
-                  "Urbanist",
-                  textStyle: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: AppColor.textColor,
+            Expanded(
+              child: Text.rich(
+                textAlign: TextAlign.start,
+                TextSpan(
+                  text: 'Congratulation! your seat has been Booked in\n',
+                  style: GoogleFonts.getFont(
+                    "Urbanist",
+                    textStyle: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: AppColor.textColor,
+                    ),
                   ),
+                  children: [
+                    TextSpan(
+                      text: 'K2 Hamliya to Islamabad\n',
+                      style: GoogleFonts.getFont(
+                        "Urbanist",
+                        textStyle: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: AppColor.textColor,
+                        ),
+                      ),
+                    ),
+                    TextSpan(
+                      text: '09:10 pm',
+                      style: GoogleFonts.getFont(
+                        "Urbanist",
+                        textStyle: const TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w600,
+                          color: AppColor.textColor,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                children: [
-                  TextSpan(
-                    text: 'K2 Hamliya to Islamabad\n',
-                    style: GoogleFonts.getFont(
-                      "Urbanist",
-                      textStyle: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: AppColor.textColor,
-                      ),
-                    ),
-                  ),
-                  TextSpan(
-                    text: '09:10 pm',
-                    style: GoogleFonts.getFont(
-                      "Urbanist",
-                      textStyle: const TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.w600,
-                        color: AppColor.textColor,
-                      ),
-                    ),
-                  ),
-                ],
               ),
             ),
           ],
