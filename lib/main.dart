@@ -22,7 +22,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => UserViewModel(),
         ),
-        ChangeNotifierProvider(create: (_) => HomeViewViewModel()),
+        ChangeNotifierProvider(
+          create: (_) => HomeViewViewModel(),
+        ),
       ],
       child: MaterialApp(
         theme: ThemeData(
