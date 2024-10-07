@@ -6,7 +6,6 @@ import 'package:sawari_pk/res/components/rounded_button.dart';
 import 'package:sawari_pk/res/components/vertical_speacing.dart';
 import 'package:sawari_pk/utils/routes/routes_name.dart';
 import 'package:provider/provider.dart';
-
 import '../../utils/routes/utils.dart';
 import '../../view_model/auth_view_model.dart';
 
@@ -164,7 +163,6 @@ class _SignupViewState extends State<SignupView> {
                             };
                             authViewModel.signUpApi(data, context);
                             print('SuccessFully Register');
-
                           }
                         }),
                 const VerticalSpeacing(30),

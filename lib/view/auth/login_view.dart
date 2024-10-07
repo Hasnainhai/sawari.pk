@@ -6,7 +6,6 @@ import 'package:sawari_pk/res/components/custom_text_field.dart';
 import 'package:sawari_pk/res/components/rounded_button.dart';
 import 'package:sawari_pk/res/components/vertical_speacing.dart';
 import 'package:sawari_pk/utils/routes/routes_name.dart';
-
 import '../../utils/routes/utils.dart';
 import '../../view_model/auth_view_model.dart';
 
